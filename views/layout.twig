@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="script.js"></script> -->
   </head>
   <body>
-    <div>{{test}}</div>
+    <div class="name">{{test}}</div>
+    {% include 'test.twig' %}
   </body>
 </html>
 
@@ -16,7 +23,6 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <title>{% block title %}Welcome!{% endblock %}</title>
       {% block stylesheets %}{% endblock %}
-      <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
       {% block body %}{% endblock %}
