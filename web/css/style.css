@@ -20,12 +20,12 @@ div#header-fixed {
   top: 0px;                  /* 位置(上0px) */
   left: 0px;                 /* 位置(右0px) */
   width: 100%;               /* 横幅100%　*/
-  height: 50px;             /* 縦幅140px */
+  height: 70px;             /* 縦幅140px */
 }
 
 div#header-bk {
 	padding: 0px 0 0px;       /* 上10px、下20pxをあける */
-	height: 50px;              /* 縦の高さ110px */
+	height: 70px;              /* 縦の高さ110px */
 	width: 100%;                /* 横の幅を100% */
 }
 
