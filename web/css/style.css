@@ -1,3 +1,64 @@
 .name {
   background:red;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ヘッダーの固定 */
+div#header-fixed {
+  position: fixed;           /* ヘッダーの固定 */
+  top: 0px;                  /* 位置(上0px) */
+  left: 0px;                 /* 位置(右0px) */
+  width: 100%;               /* 横幅100%　*/
+  height: 50px;             /* 縦幅140px */
+}
+
+div#header-bk {
+	padding: 0px 0 0px;       /* 上10px、下20pxをあける */
+	height: 50px;              /* 縦の高さ110px */
+	width: 100%;                /* 横の幅を100% */
+}
+
+div#header {
+	border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */
+	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
+	width: 100%;              /* 横の幅970px */
+	margin: auto;              /* 中央揃え */
+}
+
+/* フッターの固定 */
+div#footer-fixed {
+  position: fixed;           /* フッターの固定 */
+  bottom: 0px;               /* 位置(下0px) */
+  left: 0px;                 /* 位置(左0px) */
+  width: 100%;               /* 横幅100%　*/
+  height: 100px;             /* 縦幅140px */
+}
+
+div#footer-bk {
+  padding: 10px 0 20px;       /* 上10px、下20pxをあける */
+  height: 100px;              /* 縦の高さ140px */
+  width: 100%;                /* 横の幅を100% */
+}
+
+div#footer {
+  border-top: 1px solid #444;    /* 表示領域を白枠で囲う */
+  height: 100%;              /* 縦の表示領域はheader-bkと同じ */
+  width: 100%;              /* 横の幅970px */
+  margin: auto;              /* 中央揃え */
+}
+
+/* ボディの定義 */
+div#body-bk {
+  padding: 50px 0 100px 0;    /* 上下に160pxを余白を取る */
+}
+
+div#body {
+  width: 960px;
+  margin: ;
+}

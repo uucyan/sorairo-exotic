@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="icon/clan_emblem_favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -13,8 +14,24 @@
     <!-- <script type="text/javascript" src="script.js"></script> -->
   </head>
   <body>
-    <div class="name">{{test}}</div>
-    {% include 'test.twig' %}
+    <div id="header-fixed">
+      <div id="header-bk">
+        <div id="header"></div>
+      </div>
+    </div>
+
+    <div id="body-bk">
+      <div id="body">
+        <div class="name">{{test}}</div>
+        {% include 'test.twig' %}
+      </div>
+    </div>
+
+    <div id="footer-fixed">
+      <div id="footer-bk">
+        <div id="footer"></div>
+      </div>
+    </div>
   </body>
 </html>
 
