@@ -35,7 +35,7 @@ $app->get('/', function() use($app) {
 
 
 
-    return $app['twig']->render('layout.twig', array(
+    return $app['twig']->render('index.twig', array(
         'test' => 'layout test',
         'test0'  => '継承テスト！',
         'test1' => "$test1",
