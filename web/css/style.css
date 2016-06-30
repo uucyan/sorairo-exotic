@@ -1,6 +1,8 @@
 
 html, body {
-  font-family:Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+  /*font-family: 'Comfortaa', cursive;*/
+  /*font-family: 'Orbitron', sans-serif;*/
+  font-family:'Orbitron' , Avenir, "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -36,6 +38,7 @@ div#header-fixed {
   left: 0px;                 /* 位置(右0px) */
   width: 100%;               /* 横幅100%　*/
   height: 70px;             /* 縦幅140px */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 div#header-bk {
@@ -45,7 +48,7 @@ div#header-bk {
 }
 
 div#header {
-	border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */
+	/*border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */*/
 	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
 	width: 100%;              /* 横の幅970px */
 	margin: auto;              /* 中央揃え */
@@ -58,6 +61,7 @@ div#footer-fixed {
   left: 0px;                 /* 位置(左0px) */
   width: 100%;               /* 横幅100%　*/
   height: 100px;             /* 縦幅140px */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 div#footer-bk {
@@ -67,7 +71,7 @@ div#footer-bk {
 }
 
 div#footer {
-  border-top: 1px solid #444;    /* 表示領域を白枠で囲う */
+  /*border-top: 1px solid #444;    /* 表示領域を白枠で囲う */*/
   height: 100%;              /* 縦の表示領域はheader-bkと同じ */
   width: 100%;              /* 横の幅970px */
   margin: auto;              /* 中央揃え */
@@ -75,13 +79,27 @@ div#footer {
 
 /* ボディの定義 */
 div#body-bk {
-  padding: 50px 0 100px 0;    /* 上下に160pxを余白を取る */
+  padding: 70px 0 100px 0;    /* 上下に160pxを余白を取る */
 }
 
 div#body {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  /*margin-right: auto;*/
+  /*margin-left: auto;*/
+}
+
+.title {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 5em;
+  font-weight: 900;
+}
+
+.subTitle {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 700;
 }
 
 .overlayText {
