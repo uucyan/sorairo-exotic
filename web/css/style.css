@@ -1,18 +1,35 @@
 
-.site__title {
-    color: #f35626;
-    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: hue 60s infinite linear;
-}
-
 html, body {
+  /*font-family: 'Comfortaa', cursive;*/
+  /*font-family: 'Orbitron', sans-serif;*/
+  font-family:'Orbitron' , Avenir, "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .7), rgba(255, 0, 161, .7)),
+  url(images/sorairo.jpg);
+  /*animation: bg-color 1s infinite;
+  -webkit-animation: bg-color 1s infinite;*/
+  /*background-image: url("images/sorairo.jpg");*/
+  background-size: cover;
 }
+
+/*@-webkit-keyframes bg-color {
+  0% { background: linear-gradient(-45deg, rgba(246, 255, 0, .7), rgba(255, 0, 161, .7)), url(images/sorairo.jpg); }
+  20% { background: linear-gradient(-45deg, rgba(240, 250, 10, .7), rgba(250, 10, 165, .7)), url(images/sorairo.jpg); }
+  40% { background: linear-gradient(-45deg, rgba(235, 245, 20, .7), rgba(245, 20, 170, .7)), url(images/sorairo.jpg); }
+  60% { background: linear-gradient(-45deg, rgba(230, 240, 30, .7), rgba(240, 30, 175, .7)), url(images/sorairo.jpg); }
+  80% { background: linear-gradient(-45deg, rgba(225, 235, 40, .7), rgba(235, 40, 180, .7)), url(images/sorairo.jpg); }
+  100% { background: linear-gradient(-45deg, rgba(220, 230, 50, .7), rgba(230, 50, 185, .7)), url(images/sorairo.jpg); }
+}
+@keyframes bg-color {
+  0% { background: linear-gradient(-45deg, rgba(246, 255, 0, .7), rgba(255, 0, 161, .7)), url(images/sorairo.jpg); }
+  20% { background: linear-gradient(-45deg, rgba(240, 250, 10, .7), rgba(250, 10, 165, .7)), url(images/sorairo.jpg); }
+  40% { background: linear-gradient(-45deg, rgba(235, 245, 20, .7), rgba(245, 20, 170, .7)), url(images/sorairo.jpg); }
+  60% { background: linear-gradient(-45deg, rgba(230, 240, 30, .7), rgba(240, 30, 175, .7)), url(images/sorairo.jpg); }
+  80% { background: linear-gradient(-45deg, rgba(225, 235, 40, .7), rgba(235, 40, 180, .7)), url(images/sorairo.jpg); }
+  100% { background: linear-gradient(-45deg, rgba(220, 230, 50, .7), rgba(230, 50, 185, .7)), url(images/sorairo.jpg); }*/
 
 /* ヘッダーの固定 */
 div#header-fixed {
@@ -21,6 +38,7 @@ div#header-fixed {
   left: 0px;                 /* 位置(右0px) */
   width: 100%;               /* 横幅100%　*/
   height: 70px;             /* 縦幅140px */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 div#header-bk {
@@ -30,7 +48,7 @@ div#header-bk {
 }
 
 div#header {
-	border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */
+	/*border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */*/
 	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
 	width: 100%;              /* 横の幅970px */
 	margin: auto;              /* 中央揃え */
@@ -43,6 +61,7 @@ div#footer-fixed {
   left: 0px;                 /* 位置(左0px) */
   width: 100%;               /* 横幅100%　*/
   height: 100px;             /* 縦幅140px */
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 div#footer-bk {
@@ -52,7 +71,7 @@ div#footer-bk {
 }
 
 div#footer {
-  border-top: 1px solid #444;    /* 表示領域を白枠で囲う */
+  /*border-top: 1px solid #444;    /* 表示領域を白枠で囲う */*/
   height: 100%;              /* 縦の表示領域はheader-bkと同じ */
   width: 100%;              /* 横の幅970px */
   margin: auto;              /* 中央揃え */
@@ -60,10 +79,81 @@ div#footer {
 
 /* ボディの定義 */
 div#body-bk {
-  padding: 50px 0 100px 0;    /* 上下に160pxを余白を取る */
+  padding: 70px 0 100px 0;    /* 上下に160pxを余白を取る */
 }
 
 div#body {
-  width: 960px;
-  margin: ;
+  width: 100%;
+  /*margin-right: auto;*/
+  /*margin-left: auto;*/
+}
+
+.title {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 5em;
+  font-weight: 900;
+}
+
+.subTitle {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.text {
+  color: #FFFFFF;
+}
+
+.overlayText1 {
+  color: #FFFFFF;
+  padding: 40px;
+  text-align: center;
+  font-size: 300%;
+  /*float: left;*/
+}
+.overlayText2 {
+  color: #FFFFFF;
+  padding: 30px;
+  text-align: center;
+  font-size: 200%;
+  /*float: left;*/
+}
+
+/*.overlay {
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}*/
+
+ul {
+  padding: 40px;
+  list-style-type: none;
+	padding-left: 0;
+}
+
+.inline-block {
+	text-align: center;
+}
+.inline-block li {
+	display: inline-block;
+  margin-right: 20px;
+  color: #FFFFFF;
+  font-size: 130%;
+}
+
+input[type=text]:focus {
+  border:solid 1px #EEA34A;
+}
+
+.loginForm {
+  border:0;
+  padding:10px;
+  font-size:1.3em;
+  /*font-family:Arial, sans-serif;*/
+  color:#aaa;
+  border:solid 1px #ccc;
+  width:260px;
 }
