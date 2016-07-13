@@ -106,11 +106,18 @@ div#body {
   color: #FFFFFF;
 }
 
-.overlayText {
+.overlayText1 {
   color: #FFFFFF;
   padding: 40px;
   text-align: center;
   font-size: 300%;
+  /*float: left;*/
+}
+.overlayText2 {
+  color: #FFFFFF;
+  padding: 30px;
+  text-align: center;
+  font-size: 200%;
   /*float: left;*/
 }
 
@@ -135,4 +142,18 @@ ul {
   margin-right: 20px;
   color: #FFFFFF;
   font-size: 130%;
+}
+
+input[type=text]:focus {
+  border:solid 1px #EEA34A;
+}
+
+.loginForm {
+  border:0;
+  padding:10px;
+  font-size:1.3em;
+  /*font-family:Arial, sans-serif;*/
+  color:#aaa;
+  border:solid 1px #ccc;
+  width:260px;
 }
