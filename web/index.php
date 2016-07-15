@@ -7,12 +7,18 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
 
+const INTRODUCTION_URL = 'list/introduction.twig';
+const ACTIVITY_DETAIL_URL = 'list/activityDetail.twig';
+const CLAN_MEMBER_URL = 'list/clanMember.twig';
+const GALLERY_URL = 'list/gallery.twig';
+const JOIN_TO_CLAN_URL = 'list/joinToClan.twig';
+
 // メイン
 $app->get('/', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "fadeInDown",
-        'urlCode' => "list/introduction.twig",
+        'urlCode' => INTRODUCTION_URL,
     ));
 });
 
@@ -21,7 +27,7 @@ $app->get('/introduction', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "flash",
-        'urlCode' => "list/introduction.twig",
+        'urlCode' => INTRODUCTION_URL,
     ));
 });
 
@@ -30,7 +36,7 @@ $app->get('/activityDetail', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "bounce",
-        'urlCode' => "list/activityDetail.twig",
+        'urlCode' => ACTIVITY_DETAIL_URL,
     ));
 });
 
@@ -39,7 +45,7 @@ $app->get('/clanMember', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "rubberBand",
-        'urlCode' => "list/clanMember.twig",
+        'urlCode' => CLAN_MEMBER_URL,
     ));
 });
 
@@ -48,7 +54,7 @@ $app->get('/gallery', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "tada",
-        'urlCode' => "list/gallery.twig",
+        'urlCode' => GALLERY_URL,
     ));
 });
 
@@ -57,7 +63,7 @@ $app->get('/joinToClan', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "swing",
-        'urlCode' => "list/joinToClan.twig",
+        'urlCode' => JOIN_TO_CLAN_URL,
     ));
 });
 
