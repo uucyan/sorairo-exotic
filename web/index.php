@@ -11,7 +11,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->get('/', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
-        'urlCode' => "introduction.twig",
+        'urlCode' => "list/introduction.twig",
     ));
 });
 
@@ -19,7 +19,7 @@ $app->get('/', function() use($app) {
 $app->get('/introduction', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
-        'urlCode' => "introduction.twig",
+        'urlCode' => "list/introduction.twig",
     ));
 });
 
@@ -27,7 +27,7 @@ $app->get('/introduction', function() use($app) {
 $app->get('/activityDetail', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
-        'urlCode' => "activityDetail.twig",
+        'urlCode' => "list/activityDetail.twig",
     ));
 });
 
@@ -35,7 +35,7 @@ $app->get('/activityDetail', function() use($app) {
 $app->get('/clanMember', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
-        'urlCode' => "clanMember.twig",
+        'urlCode' => "list/clanMember.twig",
     ));
 });
 
@@ -43,7 +43,7 @@ $app->get('/clanMember', function() use($app) {
 $app->get('/gallery', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
-        'urlCode' => "gallery.twig",
+        'urlCode' => "list/gallery.twig",
     ));
 });
 
@@ -51,7 +51,7 @@ $app->get('/gallery', function() use($app) {
 $app->get('/joinToClan', function() use($app) {
 
     return $app['twig']->render('index.twig', array(
-        'urlCode' => "joinToClan.twig",
+        'urlCode' => "list/joinToClan.twig",
     ));
 });
 
