@@ -13,6 +13,7 @@ html, body {
   -webkit-animation: bg-color 1s infinite;*/
   /*background-image: url("images/sorairo.jpg");*/
   background-size: cover;
+  background-attachment: fixed;
 }
 
 /*@-webkit-keyframes bg-color {

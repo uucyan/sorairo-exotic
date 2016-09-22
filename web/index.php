@@ -1,11 +1,7 @@
 <?php
-require_once __DIR__.'/../vendor/autoload.php';
+// header("Content-Type: text/html; charset=UTF-8");
 
-$app = new Silex\Application();
-$app['debug'] = true;
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/../views',
-));
+require_once __DIR__.'/../vendor/autoload.php';
 
 const INTRODUCTION_URL = 'list/introduction.twig';
 const ACTIVITY_DETAIL_URL = 'list/activityDetail.twig';
@@ -13,12 +9,34 @@ const CLAN_MEMBER_URL = 'list/clanMember.twig';
 const GALLERY_URL = 'list/gallery.twig';
 const JOIN_TO_CLAN_URL = 'list/joinToClan.twig';
 
+$app = new Silex\Application();
+$app['debug'] = true;
+$app['isMember'] = false;
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/../views',
+));
+$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+    'db.options' => array(
+        'driver' => 'pdo_mysql',
+        'host' => '127.0.0.1',
+        'dbname' => 'sorairo_exotic',
+        'user' => 'root',
+        'password' => 'catty229',
+        'charset' => 'utf8',
+    )
+));
+
 // メイン
 $app->get('/', function() use($app) {
+    $sql = " SELECT * FROM test ";
+    $test = $app['db']->fetchAll($sql);
+    // var_dump($test);
+    // echo('<pre>');var_dump(print_r(mb_get_info()));exit;echo('</pre>');
 
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "fadeInDown",
         'urlCode' => INTRODUCTION_URL,
+        'isMember' => $app['isMember'],
     ));
 });
 
@@ -28,6 +46,7 @@ $app->get('/introduction', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "flash",
         'urlCode' => INTRODUCTION_URL,
+        'isMember' => $app['isMember'],
     ));
 });
 
@@ -37,6 +56,7 @@ $app->get('/activityDetail', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "bounce",
         'urlCode' => ACTIVITY_DETAIL_URL,
+        'isMember' => $app['isMember'],
     ));
 });
 
@@ -46,6 +66,7 @@ $app->get('/clanMember', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "rubberBand",
         'urlCode' => CLAN_MEMBER_URL,
+        'isMember' => $app['isMember'],
     ));
 });
 
@@ -55,6 +76,7 @@ $app->get('/gallery', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "tada",
         'urlCode' => GALLERY_URL,
+        'isMember' => $app['isMember'],
     ));
 });
 
@@ -64,43 +86,7 @@ $app->get('/joinToClan', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "swing",
         'urlCode' => JOIN_TO_CLAN_URL,
-    ));
-});
-
-$app->get('/test', function() use($app) {
-
-    $test1 = 300;
-    $test1 = $test1 + 1000;
-    $test2 =& $test1;
-
-    $a = "値１";
-    $b = "値２";
-    $c = "値３";
-    $index = 0;
-    $array = array('','','');
-
-
-    foreach ($array as &$arr) {
-      switch ($index) {
-        case 0:
-          $arr = $a;
-          break;
-        case 1:
-          $arr = $b;
-          break;
-        case 2:
-          $arr = $c;
-          break;
-      }
-      $index ++;
-    }
-
-    return $app['twig']->render('index.twig', array(
-        'test0'  => '継承テスト！',
-        'test1' => "$test1",
-        'test2' => "$test2",
-        'array' => "$array[2]",
-        'urlCode' => "test.twig"
+        'isMember' => $app['isMember'],
     ));
 });
 

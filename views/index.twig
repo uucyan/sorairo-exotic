@@ -45,17 +45,20 @@
           <li class="hvr-float-shadow hvr-icon-grow" style="padding-right: 0;"><a href="clanMember">ClanMember</a></li>
           <li class="hvr-float-shadow hvr-icon-rotate" style="padding-right: 0;"><a href="gallery">Gallery</a></li>
           <li class="hvr-float-shadow hvr-icon-bounce" style="padding-right: 0;"><a href="joinToClan">JoinToClan</a></li>
+          {% if isMember == true %}
+            <li class="hvr-float-shadow hvr-icon-bounce" style="padding-right: 0;"><a href="joinToClan">ClanPage</a></li>
+          {% endif %}
         </ul>
-        <div class="">{{urlCode}}</div>
+        <!-- <div class="">{{urlCode}}</div> -->
         {% include (urlCode) %}
       </div>
     </div>
 
-    <div id="footer-fixed">
+    <!-- <div id="footer-fixed">
       <div id="footer-bk">
         <div id="footer"></div>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>
 
