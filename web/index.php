@@ -8,10 +8,10 @@ const ACTIVITY_DETAIL_URL = 'list/activityDetail.twig';
 const CLAN_MEMBER_URL = 'list/clanMember.twig';
 const GALLERY_URL = 'list/gallery.twig';
 const JOIN_TO_CLAN_URL = 'list/joinToClan.twig';
+const WATCHWORD = '空色えきぞちっく';
 
 $app = new Silex\Application();
 $app['debug'] = true;
-$app['isMember'] = false;
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
@@ -36,7 +36,6 @@ $app->get('/', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "fadeInDown",
         'urlCode' => INTRODUCTION_URL,
-        'isMember' => $app['isMember'],
     ));
 });
 
@@ -46,7 +45,6 @@ $app->get('/introduction', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "flash",
         'urlCode' => INTRODUCTION_URL,
-        'isMember' => $app['isMember'],
     ));
 });
 
@@ -56,7 +54,6 @@ $app->get('/activityDetail', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "bounce",
         'urlCode' => ACTIVITY_DETAIL_URL,
-        'isMember' => $app['isMember'],
     ));
 });
 
@@ -66,7 +63,6 @@ $app->get('/clanMember', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "rubberBand",
         'urlCode' => CLAN_MEMBER_URL,
-        'isMember' => $app['isMember'],
     ));
 });
 
@@ -76,7 +72,6 @@ $app->get('/gallery', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "tada",
         'urlCode' => GALLERY_URL,
-        'isMember' => $app['isMember'],
     ));
 });
 
@@ -86,7 +81,23 @@ $app->get('/joinToClan', function() use($app) {
     return $app['twig']->render('index.twig', array(
         'titleAnimation' => "swing",
         'urlCode' => JOIN_TO_CLAN_URL,
-        'isMember' => $app['isMember'],
+    ));
+});
+
+// クランメンバーログイン
+$app->get('/login', function() use($app) {
+
+    $watchword = $_GET['watchword'];
+
+    if ($watchword == WATCHWORD){
+        return $app['twig']->render('memberPage.twig', array(
+            'name' => 'ログイン成功',
+        ));
+    }
+
+    return $app['twig']->render('index.twig', array(
+        'titleAnimation' => "flash",
+        'urlCode' => INTRODUCTION_URL,
     ));
 });
 
