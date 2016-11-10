@@ -3,11 +3,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-const INTRODUCTION_URL = 'list/introduction.twig';
-const ACTIVITY_DETAIL_URL = 'list/activityDetail.twig';
-const CLAN_MEMBER_URL = 'list/clanMember.twig';
-const GALLERY_URL = 'list/gallery.twig';
-const JOIN_TO_CLAN_URL = 'list/joinToClan.twig';
+const INTRODUCTION_URL = 'frontend/introduction.twig';
+const ACTIVITY_DETAIL_URL = 'frontend/activityDetail.twig';
+const CLAN_MEMBER_URL = 'frontend/clanMember.twig';
+const GALLERY_URL = 'frontend/gallery.twig';
+const JOIN_TO_CLAN_URL = 'frontend/joinToClan.twig';
 
 $app = new Silex\Application();
 $app['debug'] = true;
