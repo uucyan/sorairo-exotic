@@ -17,8 +17,8 @@ class MemberPage
             ));
         }
 
-          return $app['twig']->render('memberPage.twig', array(
-              'name' => 'ログイン成功',
-          ));
+        return $app['twig']->render('backend\memberPage.twig', array(
+            'name' => 'FilePath修正後ログイン成功',
+        ));
     }
 }

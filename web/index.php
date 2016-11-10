@@ -3,11 +3,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-const INTRODUCTION_URL = 'list/introduction.twig';
-const ACTIVITY_DETAIL_URL = 'list/activityDetail.twig';
-const CLAN_MEMBER_URL = 'list/clanMember.twig';
-const GALLERY_URL = 'list/gallery.twig';
-const JOIN_TO_CLAN_URL = 'list/joinToClan.twig';
+const INTRODUCTION_URL = 'frontend/introduction.twig';
+const ACTIVITY_DETAIL_URL = 'frontend/activityDetail.twig';
+const CLAN_MEMBER_URL = 'frontend/clanMember.twig';
+const GALLERY_URL = 'frontend/gallery.twig';
+const JOIN_TO_CLAN_URL = 'frontend/joinToClan.twig';
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -27,20 +27,20 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 ));
 
 // クラン紹介
-$app->get('/', 'App\Controllers\Lists\Introduction::indexAction')->bind('index');
-$app->get('/introduction', 'App\Controllers\Lists\Introduction::indexAction')->bind('introduction_index');
+$app->get('/', 'App\Controllers\Frontend\Introduction::indexAction')->bind('index');
+$app->get('/introduction', 'App\Controllers\Frontend\Introduction::indexAction')->bind('introduction_index');
 
 // 活動内容
-$app->get('/activityDetail', 'App\Controllers\Lists\ActivityDetail::indexAction')->bind('activity_detail_index');
+$app->get('/activityDetail', 'App\Controllers\Frontend\ActivityDetail::indexAction')->bind('activity_detail_index');
 
 // メンバ紹介
-$app->get('/clanMember', 'App\Controllers\Lists\ClanMember::indexAction')->bind('clan_member_index');
+$app->get('/clanMember', 'App\Controllers\Frontend\ClanMember::indexAction')->bind('clan_member_index');
 
 // ギャラリー
-$app->get('/gallery', 'App\Controllers\Lists\Gallery::indexAction')->bind('gallery_index');
+$app->get('/gallery', 'App\Controllers\Frontend\Gallery::indexAction')->bind('gallery_index');
 
 // 加入申請
-$app->get('/joinToClan', 'App\Controllers\Lists\JoinToClan::indexAction')->bind('join_to_clan_index');
+$app->get('/joinToClan', 'App\Controllers\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
 
 // メンバーページ
 $app->get('/memberPage', 'App\Controllers\Backend\MemberPage::indexAction')->bind('member_page_index');

@@ -1,16 +1,16 @@
 <?php
-namespace app\controllers\lists;
+namespace app\controllers\frontend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-class JoinToClan
+class Gallery
 {
     public function indexAction(Application $app, Request $request){
 
         return $app['twig']->render('index.twig', array(
-            'titleAnimation' => "swing",
-            'urlCode' => JOIN_TO_CLAN_URL,
+            'titleAnimation' => "tada",
+            'urlCode' => GALLERY_URL,
         ));
     }
 }
