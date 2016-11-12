@@ -14,6 +14,9 @@ $app['debug'] = true;
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
+// session
+$app->register(new Silex\Provider\SessionServiceProvider());
+$app['session']->set('isMember', false);
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
