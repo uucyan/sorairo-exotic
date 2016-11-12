@@ -17,8 +17,17 @@ class MemberPage
             ));
         }
 
+        $app['session']->set('isMember', true);
+        $isMember = $app['session']->get('isMember');
+
+        if ($isMember) {
+            $Message = 'ログインに成功しました。';
+        } else {
+            $Message = 'ログインに失敗しました。';
+        }
+
         return $app['twig']->render('backend\memberPage.twig', array(
-            'name' => 'FilePath修正後ログイン成功',
+            'name' => $Message,
         ));
     }
 }
