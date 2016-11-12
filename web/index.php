@@ -45,8 +45,8 @@ $app->get('/gallery', 'App\Controllers\Frontend\Gallery::indexAction')->bind('ga
 // 加入申請
 $app->get('/joinToClan', 'App\Controllers\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
 
-// メンバーページ
-$app->get('/memberPage', 'App\Controllers\Backend\MemberPage::indexAction')->bind('member_page_index');
+// ログイン
+$app->get('/login', 'App\Controllers\Backend\Login::indexAction')->bind('login_index');
 
 // メイン
 // $app->get('/', function() use($app) {
