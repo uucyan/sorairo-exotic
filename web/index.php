@@ -14,10 +14,9 @@ $app['debug'] = true;
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
-// session
+// Session
 $app->register(new Silex\Provider\SessionServiceProvider());
-$app['session']->set('isMember', false);
-
+// MySQL
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'driver' => 'pdo_mysql',
@@ -28,6 +27,8 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'charset' => 'utf8',
     )
 ));
+
+/* ---- Frontend -------------------------------------------------------------------------------- */
 
 // クラン紹介
 $app->get('/', 'App\Controllers\Frontend\Introduction::indexAction')->bind('index');
@@ -45,8 +46,20 @@ $app->get('/gallery', 'App\Controllers\Frontend\Gallery::indexAction')->bind('ga
 // 加入申請
 $app->get('/joinToClan', 'App\Controllers\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
 
-// メンバーページ
-$app->get('/memberPage', 'App\Controllers\Backend\MemberPage::indexAction')->bind('member_page_index');
+/* ---------------------------------------------------------------------------------------------- */
+
+/* ---- Backend --------------------------------------------------------------------------------- */
+
+// ログイン
+$app->get('/login', 'App\Controllers\Backend\Login::indexAction')->bind('login_index');
+
+// ログインリクエスト送信時
+$app->get('/loginAction', 'App\Controllers\Backend\Login::loginAction')->bind('login_action');
+
+// メンバーページトップ
+$app->get('/MemberPage', 'App\Controllers\Backend\MemberPage::indexAction')->bind('member_page_index');
+
+/* ---------------------------------------------------------------------------------------------- */
 
 // メイン
 // $app->get('/', function() use($app) {
