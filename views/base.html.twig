@@ -23,29 +23,13 @@
     <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
     <script src="bower_components/wow/dist/wow.js"></script>
   </head>
+
   <body>
-    <div id="header-fixed">
-      <div id="header-bk">
-        <div id="header">
-          <div class="text">This is the clan home page of the AVA</div>
-          <div class="text">It is possible to know the clan that "SORAIRO EXOTIC"</div>
-        </div>
-      </div>
-    </div>
-    <!-- ドロワー -->
-    {% include 'drawer.twig' %}
-
-   {% block main %}{% endblock %}
-
-    <!-- <div id="footer-fixed">
-      <div id="footer-bk">
-        <div id="footer"></div>
-      </div>
-    </div> -->
+    {% block body %}{% endblock %}
   </body>
 </html>
 
-<!-- <!DOCTYPE html>
+{#
 <html>
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53,7 +37,8 @@
       {% block stylesheets %}{% endblock %}
     </head>
     <body>
-      {% block body %}{% endblock %}
+      {% block body2 %}{% endblock %}
       {% block javascripts %}{% endblock %}
     </body>
-</html> -->
+</html>
+#}

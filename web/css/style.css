@@ -11,6 +11,9 @@ html, body {
   url(images/background_kougoushii.jpg);*/
   /*animation: bg-color 1s infinite;
   -webkit-animation: bg-color 1s infinite;*/
+}
+
+.frontBody {
   background-image: url("images/background_kougoushii.jpg");
   background-size: cover;
   background-attachment: fixed;

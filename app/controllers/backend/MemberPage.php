@@ -13,7 +13,7 @@ class MemberPage
         // ログイン判定
         if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
 
-        return $app['twig']->render('backend\memberPage.twig', array(
+        return $app['twig']->render('backend\index.twig', array(
             'name' => 'メンバーページ',
         ));
     }
