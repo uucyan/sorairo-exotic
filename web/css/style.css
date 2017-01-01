@@ -7,11 +7,14 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, rgba(95, 246, 110, 0.7), rgba(254, 122, 185, 0.7)),
-  url(images/sorairo.jpg);
+  /*background: linear-gradient(-45deg, rgba(95, 246, 110, 0.7), rgba(254, 122, 185, 0.7)),
+  url(images/background_kougoushii.jpg);*/
   /*animation: bg-color 1s infinite;
   -webkit-animation: bg-color 1s infinite;*/
-  /*background-image: url("images/sorairo.jpg");*/
+}
+
+.frontBody {
+  background-image: url("images/background_kougoushii.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
@@ -32,14 +35,14 @@ html, body {
   80% { background: linear-gradient(-45deg, rgba(225, 235, 40, .7), rgba(235, 40, 180, .7)), url(images/sorairo.jpg); }
   100% { background: linear-gradient(-45deg, rgba(220, 230, 50, .7), rgba(230, 50, 185, .7)), url(images/sorairo.jpg); }*/
 
-/* ヘッダーの固定 */
+/* ----------------- ヘッダー ----------------- */
 div#header-fixed {
   position: fixed;           /* ヘッダーの固定 */
   top: 0px;                  /* 位置(上0px) */
   left: 0px;                 /* 位置(右0px) */
   width: 100%;               /* 横幅100%　*/
   height: 70px;             /* 縦幅140px */
-  background-color: rgba(255, 255, 255, 0.3);
+  /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
 div#header-bk {
@@ -54,13 +57,14 @@ div#header {
 	width: 100%;              /* 横の幅970px */
 	margin: auto;              /* 中央揃え */
 }
+/* -------------------------------------------- */
 
-/* フッターの固定 */
+/* ----------------- フッター ----------------- */
 div#footer-fixed {
   position: fixed;           /* フッターの固定 */
   bottom: 0px;               /* 位置(下0px) */
   left: 0px;                 /* 位置(左0px) */
-  width: 100%;               /* 横幅100%　*/
+  width: 100%;               /* 横幅100% */
   height: 100px;             /* 縦幅140px */
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -77,6 +81,7 @@ div#footer {
   width: 100%;              /* 横の幅970px */
   margin: auto;              /* 中央揃え */
 }
+/* -------------------------------------------- */
 
 /* ボディの定義 */
 div#body-bk {
@@ -90,10 +95,11 @@ div#body {
 }
 
 .title {
-  color: #FFFFFF;
   text-align: center;
   font-size: 5em;
   font-weight: 900;
+  /*position: absolute;*/
+  /*top: 50px;*/
 }
 
 .subTitle {
@@ -157,4 +163,50 @@ input[type=text]:focus {
   color:#aaa;
   border:solid 1px #ccc;
   width:260px;
+}
+
+/* Webで見つけたテキストエフェクト（http://photoshopvip.net/75067） */
+.milky {
+  /*font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;*/
+  text-transform: uppercase;
+  display: block;
+  font-size: 120px;
+  color: #f1ebe5;
+  text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
+  font-weight: bold;
+  letter-spacing: -4px;
+  text-align: center;
+  /*background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);*/
+  /*position: absolute;*/
+  /*padding: 100px 200px;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%,-50%);*/
+  /*border-radius: 20px;*/
+}
+
+
+
+.intro{
+    /*background:url('https://newevolutiondesigns.com/images/freebies/cool-wallpaper-3.jpg'),linear-gradient(233deg, #e56420, #c22525, #3d9c31, #37bbde);*/
+    width:100%;
+    height:100vh;
+    background-size:cover;
+    background-blend-mode: hard-light;
+    animation: hue-rotate 3s linear infinite;
+}
+
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+    -moz-filter: hue-rotate(0);
+    -ms-filter: hue-rotate(0);
+    filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -ms-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
 }

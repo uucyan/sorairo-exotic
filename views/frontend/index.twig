@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<body class="frontBody">
+  <!-- ヘッダー -->
+  <div id="header-fixed">
+    <div id="header-bk">
+      <div id="header">
+        <div class="text">This is the clan home page of the AVA</div>
+        <div class="text">It is possible to know the clan that "SORAIRO EXOTIC"</div>
+      </div>
+    </div>
+  </div>
+  <!-- ドロワー -->
+  {% include 'drawer.twig' %}
+
+  <div id="body-bk">
+    <div id="body">
+      <div class="animated {{titleAnimation}} milky">空色えきぞちっく</div>
+      <div class="subTitle">-- sorairo exotic --</div>
+      <ul class="position inline-block">
+        <li class="hvr-float-shadow hvr-icon-pulse-grow" style="padding-right: 0;"><a href="introduction">Introduction</a></li>
+        <li class="hvr-float-shadow hvr-icon-buzz" style="padding-right: 0;"><a href="activityDetail">ActivityDetail</a></li>
+        <li class="hvr-float-shadow hvr-icon-grow" style="padding-right: 0;"><a href="clanMember">ClanMember</a></li>
+        <li class="hvr-float-shadow hvr-icon-rotate" style="padding-right: 0;"><a href="gallery">Gallery</a></li>
+        <li class="hvr-float-shadow hvr-icon-bounce" style="padding-right: 0;"><a href="joinToClan">JoinToClan</a></li>
+      </ul>
+      <!-- <div class="">{{urlCode}}</div> -->
+      {% include (urlCode) %}
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <!-- <div id="footer-fixed">
+    <div id="footer-bk">
+      <div id="footer"></div>
+    </div>
+  </div> -->
+</body>
+{% endblock %}
