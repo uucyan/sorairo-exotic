@@ -1,0 +1,17 @@
+filter:
+    excluded_paths:
+        - 'vendor/*'
+        - 'views/*'
+        - 'web/css/*'
+        - 'web/icons/*'
+        - '*.min.js'
+        - 'composer.json'
+        - 'composer.lock'
+        - '*/vendor/*'
+        - '*/build/*'
+        - '*/dist/*'
+checks:
+    php: true
+coding_style:
+    php: {  }
+build: true
