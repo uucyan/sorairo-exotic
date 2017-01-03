@@ -3,7 +3,9 @@
 ## 大前提
 
 OS：Windows10
+
 ターミナル：cmder
+
 下記URLを参考にインストール
 
 http://nelog.jp/cmder
@@ -40,20 +42,32 @@ http://qiita.com/mikoski01/items/266469535e860312145d
 
 ### ３．projectをクローンする
 
+下記コマンドをターミナルで実行する。
+
+```
 $ git clone https://github.com/uucyan/sorairo-exotic.git
-
 $ composer install
-
-上の２つ叩くだけで終わると思う。
-後はPHPのビルトインウェブサーバを起動したらいけるはず！
-
-$ php -S 127.0.0.1:8080 -t web
-
-http://127.0.0.1:8080
+```
 
 ### ４．MySQLの設定
-後で書く
-これは手順３．の前にくるかもね
+マイグレーションとか実装してないから手動でクエリを流します。
+
+テーブル作成、マスターデータ追加はWikiを参照（ https://github.com/uucyan/sorairo-exotic/wiki/MySQL%E3%81%A7%E3%81%AE%E5%88%9D%E6%9C%9F%E3%83%87%E3%83%BC%E3%82%BF%E6%8A%95%E5%85%A5 ）
+
+Windows10へのMySQLインストールは後で書く
+
+### ５．ローカル環境でアクセス
+PHPのビルトインウェブサーバをターミナルから起動
+
+```
+$ php -S 127.0.0.1:8080 -t web
+```
+
+起動したら下記でアクセス、ホームページが表示されれば成功。
+
+```
+http://127.0.0.1:8080
+```
 
 ### git関係
 
