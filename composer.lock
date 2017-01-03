@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a21bc5cd98679b114e41afadb4538fb6",
-    "content-hash": "6d0aa0267cfb77274cfb0bc68608f7db",
+    "hash": "d3177e65180abba3c3e487eb11e7014b",
+    "content-hash": "4d6d80838477b26cd7cff589a1107b4d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1046,12 +1046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "5d1f37c881b91c32b20c066cf081e83b737eb065"
+                "reference": "4528cc717d1f9bcf9adc5b2909d473f1eb4228c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5d1f37c881b91c32b20c066cf081e83b737eb065",
-                "reference": "5d1f37c881b91c32b20c066cf081e83b737eb065",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4528cc717d1f9bcf9adc5b2909d473f1eb4228c0",
+                "reference": "4528cc717d1f9bcf9adc5b2909d473f1eb4228c0",
                 "shasum": ""
             },
             "require": {
@@ -1099,7 +1099,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-12-29 21:21:24"
+            "time": "2017-01-02 20:22:20"
         }
     ],
     "packages-dev": [],
@@ -1110,6 +1110,11 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": {
+        "php": ">=5.6.27"
+    },
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.6.27"
+    }
 }
