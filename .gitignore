@@ -1,3 +1,4 @@
 .DS_Store
 /vendor
-/home/scrutinizer/build/vendor
+/home/scrutinizer/build/vendor/silex/silex
+/home/scrutinizer/build/vendor/twig/twig
