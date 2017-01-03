@@ -4,6 +4,7 @@ filter:
         - 'views/*'
         - 'web/css/*'
         - 'web/icons/*'
+        - 'web/bower_components/*'
         - '*.min.js'
         - 'composer.json'
         - 'composer.lock'
