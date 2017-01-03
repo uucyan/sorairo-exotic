@@ -14,4 +14,3 @@ checks:
     php: true
 coding_style:
     php: {  }
-build: true
