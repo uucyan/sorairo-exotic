@@ -165,6 +165,10 @@ input[type=text]:focus {
   width:260px;
 }
 
+.errorMessage {
+  color: #ff0000;
+}
+
 /* Webで見つけたテキストエフェクト（http://photoshopvip.net/75067） */
 .milky {
   /*font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;*/
