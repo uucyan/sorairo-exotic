@@ -3,10 +3,8 @@ namespace app\controllers\backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\LoginService;
 
-// 合言葉
-const WATCHWORD_MEMBER = '空色えきぞちっく';
-const WATCHWORD_MASTER = 'みゅー';
 // エラーメッセージ
 const ERROR_MESSAGE = '合言葉が一致していません(´・ω・｀)';
 
@@ -20,13 +18,16 @@ class Login
     }
 
     public function loginAction(Application $app, Request $request) {
-        // 入力した合言葉が一致しているか判定
-        if ($request->get('watchword') != WATCHWORD_MEMBER) {
-            $app['session']->set('isMember', false);
+        // 画面で入力したパスワードをテーブルの情報と照合
+        $isMember = LoginService::verificationPassword($app, $request->get('watchword'));
+
+        // 入力した合言葉が一致していたか判定
+        if (!$isMember) {
+            $app['session']->set('isMember', $isMember);
 
             // ドロワーからのログインの場合、トップページへリダイレクト
             // ログイン画面からの場合、エラーメッセージをログイン画面へ返却
-            if ($request->get('isDrawer')) {
+            if (!is_null($request->get('isDrawer'))) {
                 return $app->redirect('/');
             } else {
                 return $app['twig']->render('backend\login.twig', array(
@@ -37,7 +38,7 @@ class Login
         }
 
         // ログイン成功時はメンバーページへ遷移
-        $app['session']->set('isMember', true);
+        $app['session']->set('isMember', $isMember);
         return $app->redirect('/MemberPage');
     }
 
