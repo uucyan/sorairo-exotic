@@ -11,7 +11,6 @@ const ERROR_MESSAGE = '合言葉が一致していません(´・ω・｀)';
 class Login
 {
     public function indexAction(Application $app, Request $request) {
-
         return $app['twig']->render('backend\login.twig', array(
             'name' => 'ログインページ',
         ));
@@ -24,19 +23,17 @@ class Login
         // 入力した合言葉が一致していたか判定
         if (!$isMember) {
             $app['session']->set('isMember', $isMember);
-
-            // ドロワーからのログインの場合、トップページへリダイレクト
             // ログイン画面からの場合、エラーメッセージをログイン画面へ返却
-            if (!is_null($request->get('isDrawer'))) {
-                return $app->redirect('/');
+            // ドロワーからのログインの場合、トップページへリダイレクト
+            if (is_null($request->get('isDrawer'))) {
+              return $app['twig']->render('backend\login.twig', array(
+                  'name' => 'ログインページ',
+                  'errorMessage' => ERROR_MESSAGE,
+              ));
             } else {
-                return $app['twig']->render('backend\login.twig', array(
-                    'name' => 'ログインページ',
-                    'errorMessage' => ERROR_MESSAGE,
-                ));
+                return $app->redirect('/');
             }
         }
-
         // ログイン成功時はメンバーページへ遷移
         $app['session']->set('isMember', $isMember);
         return $app->redirect('/MemberPage');
@@ -44,8 +41,6 @@ class Login
 
     /**
      * $isMemberがtrueじゃない場合にログインページにリダイレクトさせる
-     *
-     * @param boolean $isMember
      */
     public static function isNotMemberRedirectLoginPage($app) {
         return $app->redirect('/login');
