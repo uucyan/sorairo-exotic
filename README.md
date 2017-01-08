@@ -50,11 +50,23 @@ $ composer install
 ```
 
 ### ４．MySQLの設定
+
+MySQLのインストールは下記参考
+
+http://www.dbonline.jp/mysqlinstall/
+
+pdo_mysqlを使えるようにphp.iniを編集する。
+
+下記のコメントアウトを外す（参考： http://www.hiskip.com/pg-notes/lang/php/phpdb/327.html ）
+
+```
+;extension=php_pdo_mysql.dll
+```
+
 マイグレーションとか実装してないから手動でクエリを流します。
+あと、MySQLの設定ファイルも編集する必要あり。
 
-テーブル作成、マスターデータ追加はWikiを参照（ https://github.com/uucyan/sorairo-exotic/wiki/MySQL%E3%81%A7%E3%81%AE%E5%88%9D%E6%9C%9F%E3%83%87%E3%83%BC%E3%82%BF%E6%8A%95%E5%85%A5 ）
-
-Windows10へのMySQLインストールは後で書く
+テーブル作成、マスターデータ追加、設定ファイル内容はWikiを参照（ https://github.com/uucyan/sorairo-exotic/wiki/MySQL%E3%81%A7%E3%81%AE%E5%88%9D%E6%9C%9F%E3%83%87%E3%83%BC%E3%82%BF%E6%8A%95%E5%85%A5 ）
 
 ### ５．ローカル環境でアクセス
 PHPのビルトインウェブサーバをターミナルから起動
