@@ -19,6 +19,14 @@ html, body {
   background-attachment: fixed;
 }
 
+.backendBody {
+  /*background-image: url("images/sorairo.jpg");*/
+  background-size: cover;
+  background-attachment: fixed;
+  background: linear-gradient(-45deg, rgba(95, 246, 110, 0.7), rgba(254, 122, 185, 0.7)),
+  url(images/sorairo.jpg);
+}
+
 /*@-webkit-keyframes bg-color {
   0% { background: linear-gradient(-45deg, rgba(246, 255, 0, .7), rgba(255, 0, 161, .7)), url(images/sorairo.jpg); }
   20% { background: linear-gradient(-45deg, rgba(240, 250, 10, .7), rgba(250, 10, 165, .7)), url(images/sorairo.jpg); }
@@ -41,17 +49,39 @@ div#header-fixed {
   top: 0px;                  /* 位置(上0px) */
   left: 0px;                 /* 位置(右0px) */
   width: 100%;               /* 横幅100%　*/
-  height: 70px;             /* 縦幅140px */
+  height: 70px;              /* 縦幅70px */
   /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
 div#header-bk {
 	padding: 0px 0 0px;       /* 上10px、下20pxをあける */
-	height: 70px;              /* 縦の高さ110px */
-	width: 100%;                /* 横の幅を100% */
+	height: 70px;             /* 縦の高さ110px */
+	width: 100%;              /* 横の幅を100% */
 }
 
 div#header {
+	/*border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */*/
+	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
+	width: 100%;              /* 横の幅970px */
+	margin: auto;              /* 中央揃え */
+}
+
+div#be-header-fixed {
+  position: fixed;           /* ヘッダーの固定 */
+  top: 0px;                  /* 位置(上0px) */
+  left: 0px;                 /* 位置(右0px) */
+  width: 100%;               /* 横幅100%　*/
+  height: 70px;              /* 縦幅70px */
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+div#be-header-bk {
+	padding: 0px 0 0px;       /* 上10px、下20pxをあける */
+	height: 70px;             /* 縦の高さ110px */
+	width: 100%;              /* 横の幅を100% */
+}
+
+div#be-header {
 	/*border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */*/
 	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
 	width: 100%;              /* 横の幅970px */
@@ -141,6 +171,13 @@ ul {
 	padding-left: 0;
 }
 
+ul#be-drawer {
+  padding-top: 60px;
+  padding-left: 0;
+  padding-right: 0;
+  list-style-type: none;
+}
+
 .inline-block {
 	text-align: center;
 }
@@ -149,6 +186,16 @@ ul {
   margin-right: 20px;
   color: #FFFFFF;
   font-size: 130%;
+}
+
+.be-inline-block {
+}
+
+.be-inline-block li {
+	/*display: inline-block;*/
+  /*margin-right: 20px;*/
+  color: #FFFFFF;
+  font-size: 150%;
 }
 
 input[type=text]:focus {

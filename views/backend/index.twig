@@ -1,8 +1,10 @@
-{% extends "backend/base.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block body %}
-<body>
-  <div>{{name}}</div>
+<body class="backendBody">
+  <!-- ドロワー -->
+  {% include 'backend/drawer.twig' %}
+
 </body>
 
 {% endblock %}
