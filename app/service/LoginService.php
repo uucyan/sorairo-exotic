@@ -1,5 +1,5 @@
 <?php
-namespace app\service;
+namespace app\Service;
 
 use Silex\Application;
 

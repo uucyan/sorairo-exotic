@@ -1,5 +1,5 @@
 <?php
-namespace app\controllers\backend;
+namespace app\Controllers\Backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
