@@ -24,15 +24,14 @@ class Login
         if (!$isMember) {
             $app['session']->set('isMember', $isMember);
             // ログイン画面からの場合、エラーメッセージをログイン画面へ返却
-            // ドロワーからのログインの場合、トップページへリダイレクト
             if (is_null($request->get('isDrawer'))) {
-              return $app['twig']->render('backend\login.twig', array(
-                  'name' => 'ログインページ',
-                  'errorMessage' => ERROR_MESSAGE,
-              ));
-            } else {
-                return $app->redirect('/');
+                return $app['twig']->render('backend\login.twig', array(
+                    'name' => 'ログインページ',
+                    'errorMessage' => ERROR_MESSAGE,
+                ));
             }
+            // ドロワーからのログインの場合、トップページへリダイレクト
+            return $app->redirect('/');
         }
         // ログイン成功時はメンバーページへ遷移
         $app['session']->set('isMember', $isMember);
