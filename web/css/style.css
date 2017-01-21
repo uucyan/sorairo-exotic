@@ -13,6 +13,11 @@ html, body {
   -webkit-animation: bg-color 1s infinite;*/
 }
 
+a {
+  text-decoration: none;
+}
+
+
 .frontBody {
   background-image: url("images/background_kougoushii.jpg");
   background-size: cover;
@@ -221,7 +226,6 @@ input[type=text]:focus {
   /*font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;*/
   text-transform: uppercase;
   display: block;
-  font-size: 120px;
   color: #f1ebe5;
   text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
   font-weight: bold;
@@ -234,6 +238,18 @@ input[type=text]:focus {
   /*left: 50%;*/
   /*transform: translate(-50%,-50%);*/
   /*border-radius: 20px;*/
+}
+
+.frontTitleSize {
+  font-size: 120px;
+}
+
+.backTitleSize {
+  font-size: 90px;
+}
+
+.center {
+  text-align: center;
 }
 
 

@@ -5,8 +5,6 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controllers\Backend\Login;
 
-const WATCHWORD = '空色えきぞちっく';
-
 class MemberPage
 {
     public function indexAction(Application $app, Request $request) {
