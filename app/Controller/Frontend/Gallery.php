@@ -1,5 +1,5 @@
 <?php
-namespace app\Controllers\Frontend;
+namespace app\Controller\Frontend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;

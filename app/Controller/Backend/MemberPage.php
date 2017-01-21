@@ -1,11 +1,9 @@
 <?php
-namespace app\Controllers\Backend;
+namespace app\Controller\Backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use App\Controllers\Backend\Login;
-
-const WATCHWORD = '空色えきぞちっく';
+use App\Controller\Backend\Login;
 
 class MemberPage
 {

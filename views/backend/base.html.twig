@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>空色えきぞちっく</title>
+    <title>空色えきぞちっく 管理ページ</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/templateDesign/rain.css">
-    <!-- <link rel="stylesheet" href="css/templateDesign/cosmos.css"> -->
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
-    <link rel="stylesheet" href="bower_components/hover/css/hover-min.css">
+    <!-- <link rel="stylesheet" href="bower_components/hover/css/hover-min.css"> -->
+    <link rel="stylesheet" href="bower_components/hover/css/hover.css">
     <link rel="stylesheet" href="bower_components/pure-drawer-master/dist/css/pure-drawer.css" >
     <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" > -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -26,9 +26,34 @@
     <script src="bower_components/wow/dist/wow.js"></script>
   </head>
 
-  <!-- <body> -->
-  {% block body %}{% endblock %}
-  <!-- </body> -->
+  <body class="backendBody">
+    <!-- ドロワーベースでページを作成 -->
+    <div class="pure-container" data-effect="pure-effect-scaleRotate">
+      <input type="checkbox" id="pure-toggle-left" class="pure-toggle" data-toggle="left">
+      <label class="pure-toggle-label" for="pure-toggle-left" data-toggle-label="left">
+        <span class="pure-toggle-icon"></span>
+      </label>
+
+      <!-- ドロワーのリスト部分 -->
+      <div class="pure-drawer" data-position="left">
+        <ul id="be-drawer" class="be-inline-block">
+          <a href="MemberPage"><li class="hvr-bounce-to-right">ホーム</li></a>
+          <li class="hvr-bounce-to-right">メンバー編集</li>
+          <li class="hvr-bounce-to-right">ギャラリー編集</li>
+          <li class="hvr-bounce-to-right">入隊申請</li>
+        </ul>
+      </div>
+
+      <!-- 実際のページ表示はここ -->
+      <div class="pure-pusher-container">
+        <div class="pure-pusher">
+          {% block body %}{% endblock %}
+        </div>
+      </div>
+
+      <label class="pure-overlay" for="pure-toggle-left" data-overlay="left"></label>
+    </div>
+  </body>
 </html>
 
 {#

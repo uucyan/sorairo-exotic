@@ -1,9 +1,9 @@
 <?php
-namespace app\Service;
+namespace app\Model;
 
 use Silex\Application;
 
-class LoginService
+class Login
 {
     /**
      * 画面で入力したパスワードをloginテーブルの情報と照合。
@@ -13,7 +13,7 @@ class LoginService
      * @param  string $watchword
      * @return boolean
      */
-    public function verificationPassword(Application $app, $watchword) {
+    public static function verificationPassword(Application $app, $watchword) {
         $sql = "SELECT COUNT(*) FROM login AS l WHERE l.password = '$watchword'";
         $count = $app['db']->fetchAll($sql);
 

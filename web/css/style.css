@@ -13,10 +13,23 @@ html, body {
   -webkit-animation: bg-color 1s infinite;*/
 }
 
+a {
+  text-decoration: none;
+}
+
+
 .frontBody {
   background-image: url("images/background_kougoushii.jpg");
   background-size: cover;
   background-attachment: fixed;
+}
+
+.backendBody {
+  /*background-image: url("images/sorairo.jpg");*/
+  background-size: cover;
+  background-attachment: fixed;
+  background: linear-gradient(-45deg, rgba(95, 246, 110, 0.7), rgba(254, 122, 185, 0.7)),
+  url(images/sorairo.jpg);
 }
 
 /*@-webkit-keyframes bg-color {
@@ -41,17 +54,39 @@ div#header-fixed {
   top: 0px;                  /* 位置(上0px) */
   left: 0px;                 /* 位置(右0px) */
   width: 100%;               /* 横幅100%　*/
-  height: 70px;             /* 縦幅140px */
+  height: 70px;              /* 縦幅70px */
   /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
 div#header-bk {
 	padding: 0px 0 0px;       /* 上10px、下20pxをあける */
-	height: 70px;              /* 縦の高さ110px */
-	width: 100%;                /* 横の幅を100% */
+	height: 70px;             /* 縦の高さ110px */
+	width: 100%;              /* 横の幅を100% */
 }
 
 div#header {
+	/*border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */*/
+	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
+	width: 100%;              /* 横の幅970px */
+	margin: auto;              /* 中央揃え */
+}
+
+div#be-header-fixed {
+  position: fixed;           /* ヘッダーの固定 */
+  top: 0px;                  /* 位置(上0px) */
+  left: 0px;                 /* 位置(右0px) */
+  width: 100%;               /* 横幅100%　*/
+  height: 70px;              /* 縦幅70px */
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+div#be-header-bk {
+	padding: 0px 0 0px;       /* 上10px、下20pxをあける */
+	height: 70px;             /* 縦の高さ110px */
+	width: 100%;              /* 横の幅を100% */
+}
+
+div#be-header {
 	/*border-bottom: 1px solid #444;    /* 表示領域を白枠で囲う */*/
 	height: 100%;              /* 縦の表示領域はheader-bkと同じ */
 	width: 100%;              /* 横の幅970px */
@@ -141,6 +176,13 @@ ul {
 	padding-left: 0;
 }
 
+ul#be-drawer {
+  padding-top: 60px;
+  padding-left: 0;
+  padding-right: 0;
+  list-style-type: none;
+}
+
 .inline-block {
 	text-align: center;
 }
@@ -149,6 +191,16 @@ ul {
   margin-right: 20px;
   color: #FFFFFF;
   font-size: 130%;
+}
+
+.be-inline-block {
+}
+
+.be-inline-block li {
+	/*display: inline-block;*/
+  /*margin-right: 20px;*/
+  color: #FFFFFF;
+  font-size: 150%;
 }
 
 input[type=text]:focus {
@@ -174,7 +226,6 @@ input[type=text]:focus {
   /*font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;*/
   text-transform: uppercase;
   display: block;
-  font-size: 120px;
   color: #f1ebe5;
   text-shadow: 0 8px 9px #c4b59d, 0px -2px 1px #fff;
   font-weight: bold;
@@ -187,6 +238,18 @@ input[type=text]:focus {
   /*left: 50%;*/
   /*transform: translate(-50%,-50%);*/
   /*border-radius: 20px;*/
+}
+
+.frontTitleSize {
+  font-size: 120px;
+}
+
+.backTitleSize {
+  font-size: 90px;
+}
+
+.center {
+  text-align: center;
 }
 
 
