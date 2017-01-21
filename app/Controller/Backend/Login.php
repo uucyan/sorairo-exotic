@@ -1,9 +1,9 @@
 <?php
-namespace app\Controllers\Backend;
+namespace app\Controller\Backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use App\Service\LoginService;
+use App\Model\Login as LoginModel;
 
 // エラーメッセージ
 const ERROR_MESSAGE = '合言葉が一致していません(´・ω・｀)';
@@ -18,7 +18,7 @@ class Login
 
     public function loginAction(Application $app, Request $request) {
         // 画面で入力したパスワードをテーブルの情報と照合
-        $isMember = LoginService::verificationPassword($app, $request->get('watchword'));
+        $isMember = LoginModel::verificationPassword($app, $request->get('watchword'));
 
         // 入力した合言葉が一致していたか判定
         if (!$isMember) {

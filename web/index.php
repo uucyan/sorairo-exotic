@@ -31,33 +31,33 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 /* ---- Frontend -------------------------------------------------------------------------------- */
 
 // クラン紹介
-$app->get('/', 'App\Controllers\Frontend\Introduction::indexAction')->bind('index');
-$app->get('/introduction', 'App\Controllers\Frontend\Introduction::indexAction')->bind('introduction_index');
+$app->get('/', 'App\Controller\Frontend\Introduction::indexAction')->bind('index');
+$app->get('/introduction', 'App\Controller\Frontend\Introduction::indexAction')->bind('introduction_index');
 
 // 活動内容
-$app->get('/activityDetail', 'App\Controllers\Frontend\ActivityDetail::indexAction')->bind('activity_detail_index');
+$app->get('/activityDetail', 'App\Controller\Frontend\ActivityDetail::indexAction')->bind('activity_detail_index');
 
 // メンバ紹介
-$app->get('/clanMember', 'App\Controllers\Frontend\ClanMember::indexAction')->bind('clan_member_index');
+$app->get('/clanMember', 'App\Controller\Frontend\ClanMember::indexAction')->bind('clan_member_index');
 
 // ギャラリー
-$app->get('/gallery', 'App\Controllers\Frontend\Gallery::indexAction')->bind('gallery_index');
+$app->get('/gallery', 'App\Controller\Frontend\Gallery::indexAction')->bind('gallery_index');
 
 // 加入申請
-$app->get('/joinToClan', 'App\Controllers\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
+$app->get('/joinToClan', 'App\Controller\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
 
 /* ---------------------------------------------------------------------------------------------- */
 
 /* ---- Backend --------------------------------------------------------------------------------- */
 
 // ログイン
-$app->get('/login', 'App\Controllers\Backend\Login::indexAction')->bind('login_index');
+$app->get('/login', 'App\Controller\Backend\Login::indexAction')->bind('login_index');
 
 // ログインリクエスト送信時
-$app->get('/loginAction', 'App\Controllers\Backend\Login::loginAction')->bind('login_action');
+$app->get('/loginAction', 'App\Controller\Backend\Login::loginAction')->bind('login_action');
 
 // メンバーページトップ
-$app->get('/MemberPage', 'App\Controllers\Backend\MemberPage::indexAction')->bind('member_page_index');
+$app->get('/MemberPage', 'App\Controller\Backend\MemberPage::indexAction')->bind('member_page_index');
 
 /* ---------------------------------------------------------------------------------------------- */
 

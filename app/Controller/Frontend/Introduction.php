@@ -1,16 +1,16 @@
 <?php
-namespace app\Controllers\Frontend;
+namespace app\Controller\Frontend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-class ClanMember
+class Introduction
 {
     public function indexAction(Application $app, Request $request){
 
         return $app['twig']->render('frontend\index.twig', array(
-            'titleAnimation' => "rubberBand",
-            'urlCode' => CLAN_MEMBER_URL,
+            'titleAnimation' => "fadeInDown",
+            'urlCode' => INTRODUCTION_URL,
         ));
     }
 }

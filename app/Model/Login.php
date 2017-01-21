@@ -1,9 +1,9 @@
 <?php
-namespace app\Service;
+namespace app\Model;
 
 use Silex\Application;
 
-class LoginService
+class Login
 {
     /**
      * 画面で入力したパスワードをloginテーブルの情報と照合。

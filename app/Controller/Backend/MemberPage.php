@@ -1,9 +1,9 @@
 <?php
-namespace app\Controllers\Backend;
+namespace app\Controller\Backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use App\Controllers\Backend\Login;
+use App\Controller\Backend\Login;
 
 class MemberPage
 {
