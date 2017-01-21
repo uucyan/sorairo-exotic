@@ -3,5 +3,9 @@
 {% block body %}
   <div class="center">
     <div class="animated flipInY milky backTitleSize">クランメンバーの編集</div>
+    <a class="hvr-ripple-in editMemberButton" data-remodal-target="editMemberModal">メンバー追加</a>
   </div>
+
+  {# メンバー編集ポップアップ #}
+  {% include ('popup/editMember.twig') %}
 {% endblock %}

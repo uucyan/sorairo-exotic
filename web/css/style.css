@@ -221,6 +221,18 @@ input[type=text]:focus {
   color: #ff0000;
 }
 
+.editMemberButton {
+  margin: .4em;
+  padding: 1em;
+  cursor: pointer;
+  background: #e1e1e1;
+  text-decoration: none;
+  color: #666;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Webで見つけたテキストエフェクト（http://photoshopvip.net/75067） */
 .milky {
   /*font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;*/
@@ -252,6 +264,13 @@ input[type=text]:focus {
   text-align: center;
 }
 
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
 
 
 .intro{
