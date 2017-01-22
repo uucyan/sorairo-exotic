@@ -23,10 +23,10 @@ class Member
      */
     public function createMember($data) {
         $this->app['db']->insert('member', array(
-            'name'         => $data['name'],
-            'contact'      => $data['contact'],
-            'playingGames' => $data['playingGames'],
-            'introduction' => $data['introduction'],
+            'name'          => $data['name'],
+            'contact'       => $data['contact'],
+            'playing_games' => $data['playingGames'],
+            'introduction'  => $data['introduction'],
         ));
     }
 

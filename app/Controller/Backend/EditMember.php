@@ -10,7 +10,7 @@ class EditMember
 {
     private $isCreateErrer = false;
 
-    public function indexAction(Application $app, Request $request) {
+    public function indexAction(Application $app) {
         // ログイン判定
         if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
 
