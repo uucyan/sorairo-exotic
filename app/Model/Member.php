@@ -12,7 +12,7 @@ class Member
      *
      * @param Application $app
      */
-    function __construct(Application $app) {
+    public function __construct(Application $app) {
         $this->app = $app;
     }
 
