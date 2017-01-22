@@ -3,7 +3,7 @@
   <h1>メンバー削除</h1>
   <p>{{member.name}} を本当に削除しちゃうの…？</p>
   <form class="w3-container" action="deleteAction" method=“post”>
-    <input name="name" class="w3-input" type="hidden" value="{{member.id}}">
+    <input name="id" class="w3-input" type="hidden" value="{{member.id}}">
     <br>
     <button data-remodal-action="cancel" class="remodal-cancel">キャンセル</button>
     <button class="remodal-confirm">削除</button>
