@@ -8,4 +8,13 @@
 
   {# メンバー編集ポップアップ #}
   {% include ('popup/editMember.twig') %}
+
+  <script>
+    $(document).ready( function(){
+      var inst = $('[data-remodal-id=editMemberModal]').remodal();
+      {% if isErrer is defined and isErrer == true %}
+        inst.open();
+      {% endif %}
+    });
+  </script>
 {% endblock %}

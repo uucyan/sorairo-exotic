@@ -61,6 +61,7 @@ $app->get('/MemberPage', 'App\Controller\Backend\MemberPage::indexAction')->bind
 
 // メンバー編集
 $app->get('/EditMember', 'App\Controller\Backend\EditMember::indexAction')->bind('edit_member_index');
+$app->get('/createAction', 'App\Controller\Backend\EditMember::createAction')->bind('create_member_index');
 
 /* ---------------------------------------------------------------------------------------------- */
 
