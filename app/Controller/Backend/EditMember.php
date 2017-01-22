@@ -14,8 +14,11 @@ class EditMember
         // ログイン判定
         if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
 
+        $member = new Member($app);
+        $memberDatas = $member->getMembers();
+
         return $app['twig']->render('backend\editMember.twig', array(
-            'name' => 'メンバー編集',
+            'members' => $memberDatas,
         ));
     }
 

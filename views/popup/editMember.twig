@@ -1,17 +1,18 @@
-<div class="remodal" data-remodal-id="editMemberModal">
+<div class="remodal" data-remodal-id="editMemberModal{{loop.index0}}">
   <button data-remodal-action="close" class="remodal-close"></button>
-  <h1>メンバー追加</h1>
+  <h1>メンバー編集</h1>
 
-  <form class="w3-container" action="createAction" method=“post”>
+  <form class="w3-container" action="editAction" method=“post”>
     <div class="left">
+      <input name="name" class="w3-input" type="hidden" value="{{member.id}}">
       <label class="w3-label">おなまえ</label>
-        <input name="name" class="w3-input" type="text" maxlength='255' placeholder='あなたのおなまえ♡' required>
+        <input name="name" class="w3-input" type="text" maxlength='255' placeholder='あなたのおなまえ♡' value="{{member.name}}" required>
       <label class="w3-label">れんらくさき</label>
-        <input name="contact" class="w3-input" type="text" maxlength='255' placeholder='ついったーとか♡'>
+        <input name="contact" class="w3-input" type="text" maxlength='255' placeholder='ついったーとか♡' value="{{member.contact}}">
       <label class="w3-label">あそんでいるげーむ</label>
-        <input name="playingGames" class="w3-input" type="text" maxlength='255' placeholder='そのままのとおり♡'>
+        <input name="playingGames" class="w3-input" type="text" maxlength='255' placeholder='カンマ（,）区切りで書いてね♡' value="{{member.playing_games}}">
       <label class="w3-label">じこしょうかい</label>
-        <textarea name="introduction" class="w3-input"rows="4"></textarea>
+        <textarea name="introduction" class="w3-input"rows="4" placeholder='あなたのすべてをさらけだして♡'>{{member.introduction}}</textarea>
    </div>
    <br>
     <button data-remodal-action="cancel" class="remodal-cancel">キャンセル</button>

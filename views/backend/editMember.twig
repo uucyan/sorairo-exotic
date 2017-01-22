@@ -2,16 +2,55 @@
 
 {% block body %}
   <div class="center">
-    <div class="animated flipInY milky backTitleSize">クランメンバーの編集</div>
-    <a class="hvr-ripple-in editMemberButton" data-remodal-target="editMemberModal">メンバー追加</a>
+    <div class="animated flipInY milky backTitleSize">メンバー編集</div>
+
   </div>
 
-  {# メンバー編集ポップアップ #}
-  {% include ('popup/editMember.twig') %}
+  <div class="w3-container">
+    <h2>登録してあるメンバー</h2>
+    <p style="float:left">ここに登録したある情報がホームページに反映されます。</p>
+    <a class="hvr-ripple-in editMemberButton" data-remodal-target="createMemberModal" style="float:right">メンバー追加</a>
+    {% include ('popup/createMember.twig') %}
+
+    <table class="w3-table-all w3-hoverable">
+      <thead>
+        <tr class="w3-light-grey">
+          <th>たいちょー</th>
+          <th>おなまえ</th>
+          <th>れんらくさき</th>
+          <th>あそんでるげーむ</th>
+          <th>じこしょうかい</th>
+          <th>ぼたん</th>
+        </tr>
+      </thead>
+      {% for member in members %}
+        <tr>
+          {% if member.role == '1' %}
+            <td>☆</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+          <td>{{member.name}}</td>
+          <td>{{member.contact}}</td>
+          <td>{{member.playing_games}}</td>
+          <td>{{member.introduction}}</td>
+          <td>
+            {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
+            {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
+            <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge">削除</button></a>
+            {% include ('popup/deleteMember.twig') %}
+            <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">編集</button></a>
+            {% include ('popup/editMember.twig') %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
 
   <script>
     $(document).ready( function(){
-      var inst = $('[data-remodal-id=editMemberModal]').remodal();
+      var inst = $('[data-remodal-id=createMemberModal]').remodal();
+      {# メンバー登録時にエラーが発生した場合は、画面読み込み時に自動でポップアップを表示 #}
       {% if isErrer is defined and isErrer == true %}
         inst.open();
       {% endif %}

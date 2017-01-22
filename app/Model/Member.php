@@ -8,12 +8,22 @@ class Member
     private $app;
 
     /**
-     * コンストラクター
+     * コンストラクタ
      *
      * @param Application $app
      */
     public function __construct(Application $app) {
         $this->app = $app;
+    }
+
+    /**
+     * 登録されているメンバーのデータをすべて取得
+     *
+     * @return array
+     */
+    public function getMembers() {
+        $sql = "SELECT * FROM member";
+        return $this->app['db']->fetchAll($sql);
     }
 
     /**
@@ -29,5 +39,4 @@ class Member
             'introduction'  => $data['introduction'],
         ));
     }
-
 }
