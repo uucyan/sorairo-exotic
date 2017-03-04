@@ -1,5 +1,4 @@
 <?php
-// header("Content-Type: text/html; charset=UTF-8");
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -30,8 +29,11 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 
 /* ---- Frontend -------------------------------------------------------------------------------- */
 
+// トップページ
+$app->get('/', 'App\Controller\Frontend\Index::indexAction')->bind('index');
+$app->get('/top', 'App\Controller\Frontend\Index::indexAction')->bind('top');
+
 // クラン紹介
-$app->get('/', 'App\Controller\Frontend\Introduction::indexAction')->bind('index');
 $app->get('/introduction', 'App\Controller\Frontend\Introduction::indexAction')->bind('introduction_index');
 
 // 活動内容

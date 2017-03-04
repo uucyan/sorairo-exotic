@@ -17,12 +17,23 @@ a {
   text-decoration: none;
 }
 
-
-.frontBody {
-  background-image: url("images/background_kougoushii.jpg");
+#frontBody {
+  /*background-image: url("images/background_kougoushii.jpg");
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed;*/
+  background-color: #c3a505;
+  /*animation: bgcolor 10s infinite;*/
 }
+
+/*背景の色を変化させる 下記を指定*/
+/*animation: bgcolor 10s infinite;*/
+@keyframes bgcolor {
+  0% { background-color: #9eedfb; }
+  25% { background-color: #60e3fa; }
+  50% { background-color: #28d9f9; }
+  75% { background-color: #04caed; }
+  100% { background-color: #9eedfb; }
+  }
 
 .backendBody {
   /*background-image: url("images/sorairo.jpg");*/
@@ -234,7 +245,7 @@ input[type=text]:focus {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Webで見つけたテキストエフェクト（http://photoshopvip.net/75067） */
+/* ----------Webで見つけたテキストエフェクト（http://photoshopvip.net/75067）---------- */
 .milky {
   /*font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;;*/
   text-transform: uppercase;
@@ -296,4 +307,50 @@ input[type=text]:focus {
     -ms-filter: hue-rotate(360deg);
     filter: hue-rotate(360deg);
   }
+}
+
+#wrap{
+  /*width:800px;
+  height:500px;*/
+  /*margin:30px auto 0;*/
+  /*background-image: -o-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
+  background-image: -moz-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
+  background-image: -webkit-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
+  background-image: -ms-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
+  background-image: linear-gradient(to bottom, #4DB6EB 0%, #99D8DE 100%);*/
+}
+
+/*雲のアニメーション*/
+#cloud {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: url("images/bk_cloud_animation.png");
+  /*background-size: cover;*/
+  /*background-attachment: fixed;*/
+  animation: cloudmove 20s linear infinite;
+  -webkit-animation: cloudmove 20s linear infinite;
+  -moz-animation: cloudmove 20s linear infinite;
+}
+@keyframes cloudmove {
+  0% {background-position: 0 0;}
+  25% {background-position: 200px 5px;}
+  50% {background-position: 400px 0;}
+  75% {background-position: 600px 5px;}
+  100% {background-position: 800px 0;}
+}
+@-webkit-keyframes cloudmove {
+  0% {background-position: 0 0;}
+  25% {background-position: 200px 5px;}
+  50% {background-position: 400px 0;}
+  75% {background-position: 600px 5px;}
+  100% {background-position: 800px 0;}
+}
+@-moz-keyframes cloudmove {
+  0% {background-position: 0 0;}
+  25% {background-position: 200px 5px;}
+  50% {background-position: 400px 0;}
+  75% {background-position: 600px 5px;}
+  100% {background-position: 800px 0;}
 }

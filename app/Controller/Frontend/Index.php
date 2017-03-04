@@ -3,9 +3,9 @@ namespace app\Controller\Frontend;
 
 use Silex\Application;
 
-class ClanMember
+class Index
 {
     public function indexAction(Application $app){
-        return $app['twig']->render('frontend\clanMember.twig', array());
+        return $app['twig']->render('frontend\index.twig', array());
     }
 }
