@@ -37,7 +37,7 @@
       <div id="header-bk">
         <div id="header">
           <ul id="fe-drawer" class="inline-block">
-            <li class="hvr-float-shadow hvr-icon-pulse-grow" style="padding-right: 0;"><a href="top">Top</a></li>
+            <li class="hvr-float-shadow hvr-icon-pulse-grow" style="padding-right: 0;"><a href="/">Top</a></li>
             <li class="hvr-float-shadow hvr-icon-buzz" style="padding-right: 0;"><a href="activityDetail">ActivityDetail</a></li>
             <li class="hvr-float-shadow hvr-icon-grow" style="padding-right: 0;"><a href="clanMember">ClanMember</a></li>
             <li class="hvr-float-shadow hvr-icon-rotate" style="padding-right: 0;"><a href="gallery">Gallery</a></li>
@@ -49,7 +49,11 @@
     <!-- ドロワー -->
     {% include 'drawer.twig' %}
 
-    {% block body %}{% endblock %}
+    <div id="body-bk">
+      <div id="body">
+        {% block body %}{% endblock %}
+      </div>
+    </div>
 
     <!-- フッター -->
     <!-- <div id="footer-fixed">

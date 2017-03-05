@@ -21,7 +21,7 @@ a {
   /*background-image: url("images/background_kougoushii.jpg");
   background-size: cover;
   background-attachment: fixed;*/
-  background-color: #c3a505;
+  background-color: #05c3a7;
   /*animation: bgcolor 10s infinite;*/
 }
 
@@ -264,8 +264,9 @@ input[type=text]:focus {
   /*border-radius: 20px;*/
 }
 
-.frontTitleSize {
-  font-size: 120px;
+.frontTitle {
+  font-size: 130px;
+  	padding: 200px 0 0px 0;
 }
 
 .backTitleSize {
@@ -324,8 +325,8 @@ input[type=text]:focus {
 #cloud {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  /*margin: 0;
+  padding: 0;*/
   background: url("images/bk_cloud_animation.png");
   /*background-size: cover;*/
   /*background-attachment: fixed;*/
@@ -335,22 +336,22 @@ input[type=text]:focus {
 }
 @keyframes cloudmove {
   0% {background-position: 0 0;}
-  25% {background-position: 200px 5px;}
+  25% {background-position: 200px 0;}
   50% {background-position: 400px 0;}
-  75% {background-position: 600px 5px;}
+  75% {background-position: 600px 0;}
   100% {background-position: 800px 0;}
 }
 @-webkit-keyframes cloudmove {
   0% {background-position: 0 0;}
-  25% {background-position: 200px 5px;}
+  25% {background-position: 200px 0;}
   50% {background-position: 400px 0;}
-  75% {background-position: 600px 5px;}
+  75% {background-position: 600px 0;}
   100% {background-position: 800px 0;}
 }
 @-moz-keyframes cloudmove {
   0% {background-position: 0 0;}
-  25% {background-position: 200px 5px;}
+  25% {background-position: 200px 0;}
   50% {background-position: 400px 0;}
-  75% {background-position: 600px 5px;}
+  75% {background-position: 600px 0;}
   100% {background-position: 800px 0;}
 }
