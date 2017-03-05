@@ -1,0 +1,122 @@
+<div class="container">
+    <!-- <h1>Service box</h1> -->
+    <div class="row" id="cube-effect">
+        <div class="col-md-3 col-sm-6 ">
+            <div class="service-box">
+                <div class="service-icon yellow">
+                    <div class="front-content">
+                        <i class="fa fa-sun-o"></i>
+                        <h1>空色えきぞちっくって？</h1>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>空色えきぞちっくって？</h3>
+                    <p>ゲームをわいわい楽しくプレイするクランです！</p>
+                    <p>クランマスターがロリコンなのが特徴。</p>
+                    <p>ロリっぽい子は襲われる可能性あり（嘘です）</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 ">
+            <div class="service-box">
+                <div class="service-icon orange">
+                    <div class="front-content">
+                        <i class="fa fa-users"></i>
+                        <h1>クランメンバー</h1>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>クランメンバー</h3>
+                    {% for member in members %}
+                        <a data-remodal-target="showMemberModal{{loop.index0}}" class="hvr-bounce-in">{{member.name}} <i class="fa fa-address-card-o"></i>　</a>
+                        {% include ('popup/showMember.twig') %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="service-box">
+                <div class="service-icon red">
+                    <div class="front-content">
+                        <i class="fa fa-clock-o"></i>
+                        <h1>活動内容</h1>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>活動内容</h3>
+                    <p>その時その時の面白いゲームをみんなでプレイするだけ！</p>
+                    <p>INしてる時間はそれぞれだけど夜が多い</p>
+                    <br>
+                    <p>あと、TeamSpeak3で通話しながらです。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="service-box">
+                <div class="service-icon grey">
+                    <div class="front-content">
+                        <i class="fa fa-gamepad"></i>
+                        <h1>主に遊んでるゲーム</h1>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>主に遊んでるゲーム</h3>
+                    <p>基本的にPCゲーム</p>
+                    <p>Steam Origin Battle.net</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="service-box">
+                <div class="service-icon-game grey">
+                    <div class="front-content">
+                        <h1>Overwatch</h1>
+                    </div>
+                </div>
+                <div class="service-content-game">
+                    <!-- <div class="overwatch-img"></div> -->
+                    <img src="css/templateDesign/images/overwatch.jpg" class="game-img">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="service-box">
+                <div class="service-icon-game grey">
+                    <div class="front-content">
+                        <h1>rust</h1>
+                    </div>
+                </div>
+                <div class="service-content-game">
+                    <!-- <div class="rust-img"></div> -->
+                    <img src="css/templateDesign/images/rust.png" class="game-img">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="service-box">
+                <div class="service-icon-game grey">
+                    <div class="front-content">
+                        <h1>rainbow six siege</h1>
+                    </div>
+                </div>
+                <div class="service-content-game">
+                    <!-- <div class="rainbow-six-siege-img"></div> -->
+                    <img src="css/templateDesign/images/rainbow-six-siege.jpg" class="game-img">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="service-box">
+                <div class="service-icon-game grey">
+                    <div class="front-content">
+                        <h1>AVA</h1>
+                    </div>
+                </div>
+                <div class="service-content-game">
+                    <!-- <div class="ava-img"></div> -->
+                    <img src="css/templateDesign/images/ava.jpg" class="game-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
