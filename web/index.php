@@ -1,13 +1,6 @@
 <?php
-// header("Content-Type: text/html; charset=UTF-8");
 
 require_once __DIR__.'/../vendor/autoload.php';
-
-const INTRODUCTION_URL = 'frontend/introduction.twig';
-const ACTIVITY_DETAIL_URL = 'frontend/activityDetail.twig';
-const CLAN_MEMBER_URL = 'frontend/clanMember.twig';
-const GALLERY_URL = 'frontend/gallery.twig';
-const JOIN_TO_CLAN_URL = 'frontend/joinToClan.twig';
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -30,8 +23,11 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 
 /* ---- Frontend -------------------------------------------------------------------------------- */
 
+// トップページ
+$app->get('/', 'App\Controller\Frontend\Index::indexAction')->bind('index');
+// $app->get('/top', 'App\Controller\Frontend\Index::indexAction')->bind('top');
+
 // クラン紹介
-$app->get('/', 'App\Controller\Frontend\Introduction::indexAction')->bind('index');
 $app->get('/introduction', 'App\Controller\Frontend\Introduction::indexAction')->bind('introduction_index');
 
 // 活動内容

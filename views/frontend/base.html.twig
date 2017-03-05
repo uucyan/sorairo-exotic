@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>空色えきぞちっく</title>
+    {# Meta #}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# Link #}
+    <link rel="shortcut icon" href="icons/clan_emblem_favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/templateDesign/rain.css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+    <!-- <link rel="stylesheet" href="bower_components/hover/css/hover-min.css"> -->
+    <link rel="stylesheet" href="bower_components/hover/css/hover.css">
+    <link rel="stylesheet" href="bower_components/pure-drawer-master/dist/css/pure-drawer.css" >
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" > -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    {# モーダルウィンドウ #}
+    <link rel="stylesheet" href="bower_components/remodal/dist/remodal.css">
+    <link rel="stylesheet" href="bower_components/remodal/dist/remodal-default-theme.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Orbitron:700' rel='stylesheet' type='text/css'> -->
+    {# Script #}
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+    <script src="bower_components/wow/dist/wow.js"></script>
+    <script src="bower_components/remodal/dist/remodal.min.js"></script>
+  </head>
+
+  <body id="frontBody">
+    <div id="cloud">
+    <!-- ヘッダー -->
+    <div id="header-fixed">
+      <div id="header-bk">
+        <div id="header">
+          <ul id="fe-drawer" class="inline-block">
+            <li class="hvr-float-shadow hvr-icon-pulse-grow" style="padding-right: 0;"><a href="/">Top</a></li>
+            <li class="hvr-float-shadow hvr-icon-buzz" style="padding-right: 0;"><a href="activityDetail">ActivityDetail</a></li>
+            <li class="hvr-float-shadow hvr-icon-grow" style="padding-right: 0;"><a href="clanMember">ClanMember</a></li>
+            <li class="hvr-float-shadow hvr-icon-rotate" style="padding-right: 0;"><a href="gallery">Gallery</a></li>
+            <li class="hvr-float-shadow hvr-icon-bounce" style="padding-right: 0;"><a href="joinToClan">JoinToClan</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ドロワー -->
+    {% include 'drawer.twig' %}
+
+    <div id="body-bk">
+      <div id="body">
+        {% block body %}{% endblock %}
+      </div>
+    </div>
+
+    <!-- フッター -->
+    <!-- <div id="footer-fixed">
+      <div id="footer-bk">
+        <div id="footer"></div>
+      </div>
+    </div> -->
+
+    </div>
+  </body>
+
+</html>
+
+{#
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>{% block title %}Welcome!{% endblock %}</title>
+      {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+      {% block body2 %}{% endblock %}
+      {% block javascripts %}{% endblock %}
+    </body>
+</html>
+#}
