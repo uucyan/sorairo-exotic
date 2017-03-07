@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/templateDesign/rain.css">
+    <link rel="stylesheet" href="css/templateDesign/cubeEffect.css">
+    <link rel="stylesheet" href="css/templateDesign/gooeyMenu.css">
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
     <!-- <link rel="stylesheet" href="bower_components/hover/css/hover-min.css"> -->
     <link rel="stylesheet" href="bower_components/hover/css/hover.css">
     <link rel="stylesheet" href="bower_components/pure-drawer-master/dist/css/pure-drawer.css" >
     <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" > -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {# モーダルウィンドウ #}
     <link rel="stylesheet" href="bower_components/remodal/dist/remodal.css">
     <link rel="stylesheet" href="bower_components/remodal/dist/remodal-default-theme.css">
@@ -33,13 +35,14 @@
   <body id="frontBody">
     <div id="cloud">
     <!-- ヘッダー -->
+    {#
     <div id="header-fixed">
       <div id="header-bk">
         <div id="header">
           <ul id="fe-drawer" class="inline-block">
             <li class="hvr-float-shadow hvr-icon-pulse-grow" style="padding-right: 0;"><a href="/">Top</a></li>
-            <li class="hvr-float-shadow hvr-icon-buzz" style="padding-right: 0;"><a href="activityDetail">ActivityDetail</a></li>
-            <li class="hvr-float-shadow hvr-icon-grow" style="padding-right: 0;"><a href="clanMember">ClanMember</a></li>
+            <!-- <li class="hvr-float-shadow hvr-icon-buzz" style="padding-right: 0;"><a href="activityDetail">ActivityDetail</a></li>
+            <li class="hvr-float-shadow hvr-icon-grow" style="padding-right: 0;"><a href="clanMember">ClanMember</a></li> -->
             <li class="hvr-float-shadow hvr-icon-rotate" style="padding-right: 0;"><a href="gallery">Gallery</a></li>
             <li class="hvr-float-shadow hvr-icon-bounce" style="padding-right: 0;"><a href="joinToClan">JoinToClan</a></li>
           </ul>
@@ -48,6 +51,11 @@
     </div>
     <!-- ドロワー -->
     {% include 'drawer.twig' %}
+    #}
+
+    <div style="left: -4%; position: fixed; z-index: 99;">
+      {% include 'gooey_menu.twig' %}
+    </div>
 
     <div id="body-bk">
       <div id="body">
