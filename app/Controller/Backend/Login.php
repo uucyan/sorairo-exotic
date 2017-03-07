@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Model\Login as LoginModel;
 
 // エラーメッセージ
-const ERROR_MESSAGE = '合言葉が一致していません(´・ω・｀)';
+const ERROR_MESSAGE = 'どうやら違うみたいですね…。';
 
 class Login
 {
