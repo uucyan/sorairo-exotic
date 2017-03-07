@@ -10,10 +10,13 @@ const ERROR_MESSAGE = 'どうやら違うみたいですね…。';
 
 class Login
 {
-    public function indexAction(Application $app, Request $request) {
-        return $app['twig']->render('backend\login.twig', array(
-            'name' => 'ログインページ',
-        ));
+    public function indexAction(Application $app) {
+        // Sessionにログイン情報を持っている場合は管理ページに遷移
+        if ($app['session']->get('isMember')) {
+            return $app->redirect('/MemberPage');
+        }
+
+        return $app['twig']->render('backend\login.twig', array());
     }
 
     public function loginAction(Application $app, Request $request) {
