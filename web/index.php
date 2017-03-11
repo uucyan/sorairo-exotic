@@ -49,6 +49,9 @@ $app->get('/joinToClan', 'App\Controller\Frontend\JoinToClan::indexAction')->bin
 // ログイン
 $app->get('/login', 'App\Controller\Backend\Login::indexAction')->bind('login_index');
 
+// ログアウト
+$app->get('/logout', 'App\Controller\Backend\Login::logoutAction')->bind('logout_action');
+
 // ログインリクエスト送信時
 $app->get('/loginAction', 'App\Controller\Backend\Login::loginAction')->bind('login_action');
 

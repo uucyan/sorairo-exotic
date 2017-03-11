@@ -1,38 +1,26 @@
 {% extends "frontend/base.html.twig" %}
 
 {% block body %}
-{#
-  <div style="text-align: center; padding: 200px 0 0 0;">
-    {% if errorMessage is defined %}
-      <div class="overlayText1">{{ errorMessage }}</div>
-    {% else %}
-      <div class="overlayText1">あなたはクランメンバーですか？</div>
-    {% endif %}
-
-    <form action="loginAction" method="get">
-      <input class="w3-input w3-border w3-hover-blue" style="width: 20%; display: initial;" type="password" name="watchword" maxlength="15">
-      <button  style="height: 34px;"><i class="fa fa-arrow-circle-o-right"></i></button>
-    </form>
-  </div>
-  #}
-
-
   <div class="materialContainer">
    <div class="box">
-      <div class="title">LOGIN</div>
+      <div class="title">ログイン</div>
 
       <form action="loginAction" method="get">
         <div class="input">
-           <label for="name">Username</label>
+           <label for="name">ユーザー名</label>
            <input type="text" name="name" id="name">
            <span class="spin"></span>
         </div>
 
         <div class="input">
-           <label for="pass">Password</label>
-           <input type="password" name="watchword" id="pass">
+           <label for="pass">パスワード</label>
+           <input type="password" name="password" id="pass">
            <span class="spin"></span>
         </div>
+
+        {% if errorMessage is defined %}
+          <div class="title" style="font-size: 20px;">{{errorMessage}}</div>
+        {% endif %}
 
         <div class="button login">
            <button><span>GO</span> <i class="fa fa-check"></i></button>

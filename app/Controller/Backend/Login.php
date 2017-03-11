@@ -3,48 +3,53 @@ namespace app\Controller\Backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use App\Model\Login as LoginModel;
+use App\Model\User;
 
 // エラーメッセージ
-const ERROR_MESSAGE = 'どうやら違うみたいですね…。';
+const ERROR_MESSAGE = 'ログイン情報が一致していません。';
 
 class Login
 {
     public function indexAction(Application $app) {
         // Sessionにログイン情報を持っている場合は管理ページに遷移
-        if ($app['session']->get('isMember')) {
+        if (!empty($app['session']->get('loginUser'))) {
             return $app->redirect('/MemberPage');
         }
 
         return $app['twig']->render('backend\login.twig', array());
     }
 
+    /**
+     * ログイン
+     *
+     * @param  Application $app
+     * @param  Request $request
+     */
     public function loginAction(Application $app, Request $request) {
-        // 画面で入力したパスワードをテーブルの情報と照合
-        $isMember = LoginModel::verificationPassword($app, $request->get('watchword'));
+        // 入力情報でLoginMemberを検索して取得
+        $loginUser = User::getLoginUser($app, [
+            'name' => $request->get('name'),
+            'password' => $request->get('password'),
+        ]);
 
-        // 入力した合言葉が一致していたか判定
-        if (!$isMember) {
-            $app['session']->set('isMember', $isMember);
-            // ログイン画面からの場合、エラーメッセージをログイン画面へ返却
-            if (is_null($request->get('isDrawer'))) {
-                return $app['twig']->render('backend\login.twig', array(
-                    'name' => 'ログインページ',
-                    'errorMessage' => ERROR_MESSAGE,
-                ));
-            }
-            // ドロワーからのログインの場合、トップページへリダイレクト
-            return $app->redirect('/');
+        // LoginMemberが取得できなかった場合はエラーメッセージを返却
+        if (is_null($loginUser)) {
+            return $app['twig']->render('backend\login.twig', array(
+                'errorMessage' => ERROR_MESSAGE,
+            ));
         }
         // ログイン成功時はメンバーページへ遷移
-        $app['session']->set('isMember', $isMember);
+        $app['session']->set('loginUser', $loginUser);
         return $app->redirect('/MemberPage');
     }
 
     /**
-     * $isMemberがtrueじゃない場合にログインページにリダイレクトさせる
+     * ログアウト
+     *
+     * @param  Application $app
      */
-    public static function isNotMemberRedirectLoginPage($app) {
-        return $app->redirect('/login');
+    public function logoutAction(Application $app) {
+        $app['session']->remove('loginUser');
+        return $app->redirect('/');
     }
 }
