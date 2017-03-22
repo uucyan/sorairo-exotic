@@ -37,10 +37,10 @@
           <td>
             {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
             {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
-            <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge">削除</button></a>
-            {% include ('popup/deleteMember.twig') %}
             <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">編集</button></a>
             {% include ('popup/editMember.twig') %}
+            <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge">削除</button></a>
+            {% include ('popup/deleteMember.twig') %}
           </td>
         </tr>
       {% endfor %}

@@ -3,7 +3,6 @@ namespace app\Controller\Backend;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use App\Controller\Backend\Login;
 use App\Model\Member;
 
 class EditMember
@@ -11,7 +10,9 @@ class EditMember
     private $isCreateErrer = false;
 
     public function indexAction(Application $app) {
-        if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
+        if (empty($app['session']->get('loginUser'))) {
+            return $app->redirect('/login');
+        }
 
         $member = new Member($app);
         $memberDatas = $member->getMembers();
@@ -28,7 +29,9 @@ class EditMember
      * @param Request $request
      */
     public function createAction(Application $app, Request $request) {
-        if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
+        if (empty($app['session']->get('loginUser'))) {
+            return $app->redirect('/login');
+        }
 
         $member = new Member($app);
         $member->createMember([
@@ -55,7 +58,9 @@ class EditMember
      * @param Request $request
      */
     public function editAction(Application $app, Request $request) {
-        if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
+        if (empty($app['session']->get('loginUser'))) {
+            return $app->redirect('/login');
+        }
 
         $member = new Member($app);
         $member->editMember([
@@ -83,7 +88,9 @@ class EditMember
      * @param Request $request
      */
     public function deleteAction(Application $app, Request $request) {
-        if (!$app['session']->get('isMember')) { return Login::isNotMemberRedirectLoginPage($app); }
+        if (empty($app['session']->get('loginUser'))) {
+            return $app->redirect('/login');
+        }
 
         $member = new Member($app);
         $member->deleteMember($request->get('id'));

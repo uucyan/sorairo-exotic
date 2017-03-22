@@ -37,10 +37,12 @@ a {
 
 .backendBody {
   /*background-image: url("images/sorairo.jpg");*/
-  background-size: cover;
+  /*background-size: cover;
   background-attachment: fixed;
   background: linear-gradient(-45deg, rgba(95, 246, 110, 0.7), rgba(254, 122, 185, 0.7)),
-  url(images/sorairo.jpg);
+  url(images/sorairo.jpg);*/
+  background-color: #a20000;
+  /*animation: bgcolor 10s infinite;*/
 }
 
 /*@-webkit-keyframes bg-color {
