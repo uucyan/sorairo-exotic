@@ -1,7 +1,54 @@
 {% extends "frontend/base.html.twig" %}
 
 {% block body %}
-  <div style="text-align: center;">
-    <h2 >加入申請</h2>
+<link rel="stylesheet" href="css/templateDesign/fancyTextInput.css">
+<link rel="stylesheet" href="css/templateDesign/polymerMessage.css">
+
+<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,400,100,300,600,700' rel='stylesheet' type='text/css'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+
+<!-- <div class="information message">
+  <h2>Information</h2>
+	<p>This is an 'information message' div. It helps people get to know the site a little better. </p>
+</div>
+<div class="announcement message">
+  <h2>Announcement</h2>
+	<p>This is an 'announcement message' div! It is loud and proud to say things that you want people to hear first!</p>
+</div>
+<div class="warning message">
+  <h2>Warning</h2>
+	<p>This is a 'warning message' div. It warns the users that to expect some changes or limitations.</p>
+</div> -->
+{% if messageType == 'success' %}
+  <div class="success message">
+    <h2>入隊申請完了</h2>
+  	<p>クランマスターからの返事を気長に待ちましょう。</p>
   </div>
+{% elseif messageType == 'error' %}
+  <div class="error message">
+    <h2>入隊申請の送信に失敗</h2>
+  	<p>お手数ですがもう一度送信してください。</p>
+  </div>
+{% endif %}
+
+<form action="requestAction" method="post">
+  <h1>入隊申請フォーム</h1>
+  <div class="question">
+    <input name="name" type="text" required/>
+    <label>あなたのお名前</label>
+  </div>
+  <div class="question">
+    <input name="contact" type="text" required/>
+    <label>連絡先（メールアドレス・ツイッターIDなど）</label>
+  </div>
+  <div class="question">
+    <input name="playingGames" type="text" required/>
+    <label>遊んでいるゲーム</label>
+  </div>
+  <div class="question">
+    <input name="introduction" type="text" required/>
+    <label>入隊したい理由を一言</label>
+  </div>
+  <button>送信</button>
+</form>
 {% endblock %}

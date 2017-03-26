@@ -39,8 +39,9 @@ $app->get('/clanMember', 'App\Controller\Frontend\ClanMember::indexAction')->bin
 // ギャラリー
 $app->get('/gallery', 'App\Controller\Frontend\Gallery::indexAction')->bind('gallery_index');
 
-// 加入申請
+// 入隊申請
 $app->get('/joinToClan', 'App\Controller\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
+$app->post('/requestAction', 'App\Controller\Frontend\JoinToClan::requestAction')->bind('join_to_clan_request');
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -60,9 +61,9 @@ $app->get('/MemberPage', 'App\Controller\Backend\MemberPage::indexAction')->bind
 
 // メンバー編集
 $app->get('/EditMember', 'App\Controller\Backend\EditMember::indexAction')->bind('edit_member_index');
-$app->get('/createAction', 'App\Controller\Backend\EditMember::createAction')->bind('create_index');
-$app->get('/editAction', 'App\Controller\Backend\EditMember::editAction')->bind('edit_index');
-$app->get('/deleteAction', 'App\Controller\Backend\EditMember::deleteAction')->bind('delete_index');
+$app->post('/createAction', 'App\Controller\Backend\EditMember::createAction')->bind('create_index');
+$app->post('/editAction', 'App\Controller\Backend\EditMember::editAction')->bind('edit_index');
+$app->post('/deleteAction', 'App\Controller\Backend\EditMember::deleteAction')->bind('delete_index');
 
 /* ---------------------------------------------------------------------------------------------- */
 
