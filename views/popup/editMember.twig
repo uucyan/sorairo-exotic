@@ -2,7 +2,7 @@
   <button data-remodal-action="close" class="remodal-close"></button>
   <h1>メンバー編集</h1>
 
-  <form class="w3-container" action="editAction" method=“post”>
+  <form class="w3-container" action="editAction" method="post">
     <div class="left">
       <input name="id" class="w3-input" type="hidden" value="{{member.id}}">
       <label class="w3-label">おなまえ</label>
@@ -15,8 +15,8 @@
         <textarea name="introduction" class="w3-input"rows="4" placeholder='あなたのすべてをさらけだして♡'>{{member.introduction}}</textarea>
    </div>
    <br>
-    <button data-remodal-action="cancel" class="remodal-cancel">キャンセル</button>
     <button class="remodal-confirm">登録</button>
+    <button data-remodal-action="cancel" class="remodal-cancel">キャンセル</button>
   </form>
 </div>
 

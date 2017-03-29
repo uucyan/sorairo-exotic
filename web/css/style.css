@@ -28,11 +28,11 @@ a {
 /*背景の色を変化させる 下記を指定*/
 /*animation: bgcolor 10s infinite;*/
 @keyframes bgcolor {
-  0% { background-color: #9eedfb; }
-  25% { background-color: #60e3fa; }
-  50% { background-color: #28d9f9; }
-  75% { background-color: #04caed; }
-  100% { background-color: #9eedfb; }
+  0% { background-color: #7795fe; }
+  25% { background-color: #e460fa; }
+  50% { background-color: #ff478f; }
+  75% { background-color: #ff5555; }
+  100% { background-color: #7795fe; }
   }
 
 .backendBody {
@@ -41,7 +41,7 @@ a {
   background-attachment: fixed;
   background: linear-gradient(-45deg, rgba(95, 246, 110, 0.7), rgba(254, 122, 185, 0.7)),
   url(images/sorairo.jpg);*/
-  background-color: #a20000;
+  background-color: #7795fe;
   /*animation: bgcolor 10s infinite;*/
 }
 

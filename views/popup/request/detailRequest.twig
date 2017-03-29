@@ -1,0 +1,35 @@
+<div class="remodal" data-remodal-id="detailRequestModal{{loop.index0}}">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>{{request.name}} の入隊申請</h1>
+  <div class="left">
+    <label class="w3-label">連絡先</label>
+    <input class="w3-input" type="text" disabled="disabled" value="{{request.contact}}">
+    <label class="w3-label">遊んでいるゲーム</label>
+    <input class="w3-input" type="text" disabled="disabled" value="{{request.playing_games}}">
+    <label class="w3-label">入隊したい理由</label>
+    <input class="w3-input" type="text" disabled="disabled" value="{{request.introduction}}">
+  </div>
+  <br>
+  {% if user.role == 1 %}
+    <form action="requestUpdateAction" method="post">
+      <input name="id" type="hidden" value="{{request.id}}">
+      <div class="switch-box is-primary">
+        <label for="primary{{loop.index0}}" class="switch-box-label" style="margin-right: 8px;">未確認</label>
+        <input id="primary{{loop.index0}}" name="is_new" class="switch-box-input" type="checkbox" value="false" {% if request.is_new == false %} checked {% endif %}/>
+        <label for="primary{{loop.index0}}" class="switch-box-slider"></label>
+        <label for="primary{{loop.index0}}" class="switch-box-label">確認済</label>
+      </div>
+      <div class="switch-box is-info">
+        <label for="info{{loop.index0}}" class="switch-box-label" style="margin-right: 8px;">未返答</label>
+        <input id="info{{loop.index0}}" name="processed" class="switch-box-input" type="checkbox" value="true" {% if request.processed == true %} checked {% endif %}/>
+        <label for="info{{loop.index0}}" class="switch-box-slider"></label>
+        <label for="info{{loop.index0}}" class="switch-box-label">返答済</label>
+      </div>
+      <br>
+      <button class="remodal-confirm">更新</button>
+      <button data-remodal-action="cancel" class="remodal-cancel">閉じる</button>
+    </form>
+  {% else %}
+    <button data-remodal-action="cancel" class="remodal-cancel">閉じる</button>
+  {% endif %}
+</div>
