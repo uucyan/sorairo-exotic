@@ -31,7 +31,7 @@ class Request
      *
      * @param array $data
      */
-    public function createRequest($data) {
+    public function create($data) {
         $this->app['db']->insert('request', array(
             'name'          => $data['name'],
             'contact'       => $data['contact'],
@@ -41,16 +41,14 @@ class Request
     }
 
     /**
-     * 入隊申請の情報を更新
+     * 入隊申請のステータスを更新
      *
      * @param array $data
      */
-    public function updateRequest($data) {
+    public function update($data) {
         $this->app['db']->update('request', array(
-            'name'          => $data['name'],
-            'contact'       => $data['contact'],
-            'playing_games' => $data['playingGames'],
-            'introduction'  => $data['introduction'],
+            'is_new'    => $data['is_new'],
+            'processed' => $data['processed'],
         ), array('id' => $data['id']));
     }
 
@@ -59,7 +57,7 @@ class Request
      *
      * @param string $id
      */
-    public function deleteMember($id) {
+    public function delete($id) {
         $this->app['db']->delete('request', array('id' => $id));
     }
 }

@@ -21,7 +21,7 @@ class JoinToClan
 
     public function requestAction(Application $app, Request $request){
         $enlistmentRequest = new EnlistmentRequest($app);
-        $enlistmentRequest->createRequest([
+        $enlistmentRequest->create([
             'name'         => $request->get('name'),
             'contact'      => $request->get('contact'),
             'playingGames' => $request->get('playingGames'),

@@ -54,7 +54,7 @@ $app->get('/login', 'App\Controller\Backend\Login::indexAction')->bind('login_in
 $app->get('/logout', 'App\Controller\Backend\Login::logoutAction')->bind('logout_action');
 
 // ログインリクエスト送信時
-$app->get('/loginAction', 'App\Controller\Backend\Login::loginAction')->bind('login_action');
+$app->post('/loginAction', 'App\Controller\Backend\Login::loginAction')->bind('login_action');
 
 // メンバーページトップ
 $app->get('/MemberPage', 'App\Controller\Backend\MemberPage::indexAction')->bind('member_page_index');
@@ -64,6 +64,11 @@ $app->get('/EditMember', 'App\Controller\Backend\EditMember::indexAction')->bind
 $app->post('/createAction', 'App\Controller\Backend\EditMember::createAction')->bind('create_index');
 $app->post('/editAction', 'App\Controller\Backend\EditMember::editAction')->bind('edit_index');
 $app->post('/deleteAction', 'App\Controller\Backend\EditMember::deleteAction')->bind('delete_index');
+
+// 入隊申請一覧
+$app->get('/RequestList', 'App\Controller\Backend\RequestList::indexAction')->bind('request_list_index');
+$app->post('/requestUpdateAction', 'App\Controller\Backend\RequestList::updateAction')->bind('request_update_index');
+$app->post('/requestDeleteAction', 'App\Controller\Backend\RequestList::deleteAction')->bind('request_delete_index');
 
 /* ---------------------------------------------------------------------------------------------- */
 
