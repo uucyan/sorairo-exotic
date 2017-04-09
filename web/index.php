@@ -10,16 +10,35 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Session
 $app->register(new Silex\Provider\SessionServiceProvider());
 // MySQL
-$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-    'db.options' => array(
-        'driver' => 'pdo_mysql',
-        'host' => '127.0.0.1',
-        'dbname' => 'sorairo_exotic',
-        'user' => 'root',
-        'password' => 'catty229',
-        'charset' => 'utf8',
-    )
-));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+if (empty($url["path"])){
+    $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+        'db.options' => array(
+            'driver' => 'pdo_mysql',
+            'host' => '127.0.0.1',
+            'dbname' => 'sorairo_exotic',
+            'user' => 'root',
+            'password' => 'catty229',
+            'charset' => 'utf8',
+        )
+    ));
+} else {
+    $host = $url["host"];
+    $user = $url["user"];
+    $password = $url["pass"];
+    $dbname = substr($url["path"], 1);
+    $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+        'db.options' => array(
+            'driver' => 'pdo_mysql',
+            'host' => $host,
+            'dbname' => $dbname,
+            'user' => $user,
+            'password' => $password,
+            'charset' => 'utf8',
+        )
+    ));
+}
+
 
 /* ---- Frontend -------------------------------------------------------------------------------- */
 
