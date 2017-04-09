@@ -2,6 +2,33 @@
 
 {% block body %}
   <div style="text-align: center;">
-    <h2 >ギャラリー</h2>
+    <div id="sample"></div>
   </div>
+
+
+<script>
+// IFrame Player API の読み込み
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// YouTubeの埋め込み
+function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player(
+        'sample', // 埋め込む場所の指定
+        {
+            width: 640, // プレーヤーの幅
+            height: 390, // プレーヤーの高さ
+            videoId: 'bE1OHraH35w', // YouTubeのID
+            // パラメータの設定
+            playerVars: {
+                rel: 0, // 再生終了後に関連動画を表示するかどうか設定
+                autoplay: 0 // 自動再生するかどうか設定
+            }
+        }
+    );
+}
+</script>
+
 {% endblock %}
