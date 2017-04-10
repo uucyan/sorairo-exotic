@@ -44,7 +44,6 @@ if (empty($url["path"])){
 
 // トップページ
 $app->get('/', 'App\Controller\Frontend\Index::indexAction')->bind('index');
-// $app->get('/top', 'App\Controller\Frontend\Index::indexAction')->bind('top');
 
 // クラン紹介
 $app->get('/introduction', 'App\Controller\Frontend\Introduction::indexAction')->bind('introduction_index');
