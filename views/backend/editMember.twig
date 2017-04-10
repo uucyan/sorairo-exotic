@@ -1,51 +1,74 @@
 {% extends "backend/base.html.twig" %}
 
 {% block body %}
-  <div class="center">
-    <div class="animated flipInY milky backTitleSize">メンバー編集</div>
+<link rel="stylesheet" href="css/templateDesign/requestList.css">
+<link rel="stylesheet" href="css/templateDesign/button.css">
+<link rel="stylesheet" href="css/templateDesign/polymerMessage.css">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-  </div>
+<div class="animated shake information message">
+  <h2>メンバー編集</h2>
+  <p>このページで編集したメンバーの情報が観覧ページ側に反映されます。</p>
+</div>
 
-  <div class="w3-container">
-    <h2>登録してあるメンバー</h2>
-    <p style="float:left">ここに登録したある情報がホームページに反映されます。</p>
-    <a class="hvr-ripple-in editMemberButton" data-remodal-target="createMemberModal" style="float:right">メンバー追加</a>
+<div class="container-fluid">
+  <div id="container" class="col-md-8 col-md-offset-2">
+    <div class="buttons">
+        <button class="grid"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>
+        <button class="table-hover"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
+    </div>
+    <a data-remodal-target="createMemberModal" style="float:right"><button class="plus">追加</button></a>
     {% include ('popup/createMember.twig') %}
 
-    <table class="w3-table-all w3-hoverable">
+    <table class="table table-hover" id="oi">
       <thead>
-        <tr class="w3-light-grey">
+        <tr>
           <th></th>
-          <th>おなまえ</th>
-          <th>れんらくさき</th>
-          <th>あそんでるげーむ</th>
+          <th style="min-width: 100px;">おなまえ</th>
+          <th style="min-width: 120px;">れんらくさき</th>
+          <th style="min-width: 150px;">あそんでるげーむ</th>
           <th>じこしょうかい</th>
           <th width="154px">ぼたん</th>
         </tr>
       </thead>
-      {% for member in members %}
-        <tr>
-          {% if member.role == '1' %}
-            <td>☆</td>
-          {% else %}
-            <td></td>
-          {% endif %}
-          <td>{{member.name}}</td>
-          <td>{{member.contact}}</td>
-          <td>{{member.playing_games}}</td>
-          <td>{{member.introduction}}</td>
-          <td>
-            {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
-            {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
-            <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-blue w3-round-xlarge">編集</button></a>
-            {% include ('popup/editMember.twig') %}
-            <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge">削除</button></a>
-            {% include ('popup/deleteMember.twig') %}
-          </td>
-        </tr>
-      {% endfor %}
+      <tbody>
+        {% for member in members %}
+          <tr>
+            {% if member.role == '1' %}
+              <td>☆</td>
+            {% else %}
+              <td></td>
+            {% endif %}
+            <td>{{member.name}}</td>
+            <td>{{member.contact}}</td>
+            <td>{{member.playing_games}}</td>
+            <td>{{member.introduction}}</td>
+            <td>
+              {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
+              {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
+              <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
+              {% include ('popup/editMember.twig') %}
+              <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
+              {% include ('popup/deleteMember.twig') %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
+    <ul class="grid hide">
+      {% for member in members %}
+        <li>
+          <div class="img-circle"></div><h3>{{member.name}}</h3>
+          <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
+          {% include ('popup/editMember.twig') %}
+          <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
+          {% include ('popup/deleteMember.twig') %}
+        </li>
+      {% endfor %}
+     </ul>
   </div>
+</div>
 
   <script>
     $(document).ready( function(){
@@ -54,6 +77,16 @@
       {% if isErrer is defined and isErrer == true %}
         inst.open();
       {% endif %}
+    });
+
+    $('button').on('click',function(e) {
+      if ($(this).hasClass('grid')) {
+        $('#container ul').removeClass('hide');
+        $('#container table').addClass('hide');
+      } else if ($(this).hasClass('table-hover')) {
+        $('#container table').removeClass('hide');
+        $('#container ul').addClass('hide');
+      }
     });
   </script>
 {% endblock %}
