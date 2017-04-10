@@ -14,10 +14,10 @@
 
 <div class="container-fluid">
   <div id="container" class="col-md-8 col-md-offset-2">
-    <div class="buttons">
+    <!-- <div class="buttons">
         <button class="grid"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>
         <button class="table-hover"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
-    </div>
+    </div> -->
 
     <table class="table table-hover" id="oi">
       <thead>
@@ -59,7 +59,7 @@
             <td>Deceased</td>
           </tr> -->
         {% endfor %}
-      </tbody
+      </tbody>
     </table>
 
     <ul class="grid hide">
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<script>
+<!-- <script>
   $('button').on('click',function(e) {
     if ($(this).hasClass('grid')) {
       $('#container ul').removeClass('hide');
@@ -83,6 +83,6 @@
     	$('#container ul').addClass('hide');
     }
   });
-</script>
+</script> -->
 
 {% endblock %}

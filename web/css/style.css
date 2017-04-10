@@ -268,7 +268,14 @@ input[type=text]:focus {
 
 .frontTitle {
   font-size: 130px;
-  	padding: 200px 0 0px 0;
+  padding: 200px 0 0px 0;
+}
+
+@media screen and (max-device-width:700px) {
+  .frontTitle {
+    font-size: 110px;
+    padding: 200px 0 0px 0;
+  }
 }
 
 .backTitleSize {
@@ -326,7 +333,7 @@ input[type=text]:focus {
 /*雲のアニメーション*/
 #cloud {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   /*margin: 0;
   padding: 0;*/
   background: url("images/bk_cloud_animation.png");
