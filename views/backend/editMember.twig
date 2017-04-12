@@ -19,7 +19,7 @@
         <button class="table-hover"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
     </div>
     <a data-remodal-target="createMemberModal" style="float:right"><button class="plus">追加</button></a>
-    {% include ('popup/createMember.twig') %}
+    {% include ('popup/member/create.twig') %}
 
     <table class="table table-hover" id="oi">
       <thead>
@@ -48,9 +48,9 @@
               {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
               {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
               <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
-              {% include ('popup/editMember.twig') %}
+              {% include ('popup/member/edit.twig') %}
               <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
-              {% include ('popup/deleteMember.twig') %}
+              {% include ('popup/member/delete.twig') %}
             </td>
           </tr>
         {% endfor %}
@@ -61,9 +61,9 @@
         <li>
           <div class="img-circle"></div><h3>{{member.name}}</h3>
           <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
-          {% include ('popup/editMember.twig') %}
+          {% include ('popup/member/edit.twig') %}
           <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
-          {% include ('popup/deleteMember.twig') %}
+          {% include ('popup/member/delete.twig') %}
         </li>
       {% endfor %}
      </ul>
