@@ -29,7 +29,7 @@
                     <h3>クランメンバー</h3>
                     {% for member in members %}
                         <a data-remodal-target="showMemberModal{{loop.index0}}" class="hvr-bounce-in">{{member.name}} <i class="fa fa-address-card-o"></i>　</a>
-                        {% include ('popup/showMember.twig') %}
+                        {% include ('popup/member/show.twig') %}
                     {% endfor %}
                 </div>
             </div>

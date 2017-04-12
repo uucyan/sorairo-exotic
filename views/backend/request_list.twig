@@ -42,10 +42,10 @@
             <td>{{request.created_at}}</td>
             <td>
               <a data-remodal-target="detailRequestModal{{loop.index0}}"><button class="plus">詳細</button></a>
-                {% include ('popup/request/detailRequest.twig') %}
+                {% include ('popup/request/detail.twig') %}
               {% if user.role == 1 %}
                 <a data-remodal-target="deleteRequestModal{{loop.index0}}"><button class="plus">削除</button></a>
-                {% include ('popup/request/deleteRequest.twig') %}
+                {% include ('popup/request/delete.twig') %}
               {% endif %}
             </td>
           </tr>
