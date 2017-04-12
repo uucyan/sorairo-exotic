@@ -46,13 +46,13 @@ if (empty($url["path"])){
 $app->get('/', 'App\Controller\Frontend\Index::indexAction')->bind('index');
 
 // クラン紹介
-$app->get('/introduction', 'App\Controller\Frontend\Introduction::indexAction')->bind('introduction_index');
+// $app->get('/introduction', 'App\Controller\Frontend\Introduction::indexAction')->bind('introduction_index');
 
 // 活動内容
-$app->get('/activityDetail', 'App\Controller\Frontend\ActivityDetail::indexAction')->bind('activity_detail_index');
+// $app->get('/activityDetail', 'App\Controller\Frontend\ActivityDetail::indexAction')->bind('activity_detail_index');
 
 // メンバ紹介
-$app->get('/clanMember', 'App\Controller\Frontend\ClanMember::indexAction')->bind('clan_member_index');
+// $app->get('/clanMember', 'App\Controller\Frontend\ClanMember::indexAction')->bind('clan_member_index');
 
 // ギャラリー
 $app->get('/gallery', 'App\Controller\Frontend\Gallery::indexAction')->bind('gallery_index');
@@ -60,8 +60,6 @@ $app->get('/gallery', 'App\Controller\Frontend\Gallery::indexAction')->bind('gal
 // 入隊申請
 $app->get('/joinToClan', 'App\Controller\Frontend\JoinToClan::indexAction')->bind('join_to_clan_index');
 $app->post('/requestAction', 'App\Controller\Frontend\JoinToClan::requestAction')->bind('join_to_clan_request');
-
-/* ---------------------------------------------------------------------------------------------- */
 
 /* ---- Backend --------------------------------------------------------------------------------- */
 
@@ -87,7 +85,5 @@ $app->post('/deleteAction', 'App\Controller\Backend\EditMember::deleteAction')->
 $app->get('/RequestList', 'App\Controller\Backend\RequestList::indexAction')->bind('request_list_index');
 $app->post('/requestUpdateAction', 'App\Controller\Backend\RequestList::updateAction')->bind('request_update_index');
 $app->post('/requestDeleteAction', 'App\Controller\Backend\RequestList::deleteAction')->bind('request_delete_index');
-
-/* ---------------------------------------------------------------------------------------------- */
 
 $app->run();
