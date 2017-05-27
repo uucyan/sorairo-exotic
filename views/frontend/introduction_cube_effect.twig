@@ -26,10 +26,19 @@
                     </div>
                 </div>
                 <div class="service-content">
-                    <h3>グループメンバー</h3>
+                    <h3>マスター</h3>
                     {% for member in members %}
-                        <a data-remodal-target="showMemberModal{{loop.index0}}" class="hvr-bounce-in">{{member.name}} <i class="fa fa-address-card-o"></i>　</a>
-                        {% include ('popup/member/show.twig') %}
+                        {% if member.role == 1 %}
+                            <a data-remodal-target="showMemberModal{{loop.index0}}" class="hvr-bounce-in">{{member.name}} <i class="fa fa-address-card-o"></i>　</a>
+                            {% include ('popup/member/show.twig') %}
+                        {% endif %}
+                    {% endfor %}
+                    <h3>メンバー</h3>
+                    {% for member in members %}
+                        {% if member.role == 2 %}
+                            <a data-remodal-target="showMemberModal{{loop.index0}}" class="hvr-bounce-in">{{member.name}} <i class="fa fa-address-card-o"></i>　</a>
+                            {% include ('popup/member/show.twig') %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
