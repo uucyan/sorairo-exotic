@@ -220,7 +220,7 @@ ul#be-drawer {
 @media screen and (max-device-width:700px) {
   .be-inline-block li {
     color: #FFFFFF;
-    font-size: 200%;
+    font-size: 250%;
   }
 }
 
