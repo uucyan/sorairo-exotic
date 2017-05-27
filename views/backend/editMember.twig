@@ -18,7 +18,10 @@
         <button class="grid"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>
         <button class="table-hover"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
     </div>
-    <a data-remodal-target="createMemberModal" style="float:right"><button class="plus">追加</button></a>
+    {# 既に自分の情報を追加している場合は表示しない #}
+    {% if isCreated == false %}
+      <a data-remodal-target="createMemberModal" style="float:right"><button class="plus">追加</button></a>
+    {% endif %}
     {% include ('popup/member/create.twig') %}
 
     <table class="table table-hover" id="oi">
@@ -45,12 +48,22 @@
             <td>{{member.playing_games}}</td>
             <td>{{member.introduction}}</td>
             <td>
-              {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
-              {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
-              <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
-              {% include ('popup/member/edit.twig') %}
-              <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
-              {% include ('popup/member/delete.twig') %}
+              {% if loginUser.role == 1 %}
+                {# 編集対象とするメンバーの情報をポップアップで表示させるために、indexを元にidを動的に生成している #}
+                {# TODO：この方法だとメンバーの数だけテンプレートを読み込んでるからなんとかしたい #}
+                <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
+                {% include ('popup/member/edit.twig') %}
+                <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
+                {% include ('popup/member/delete.twig') %}
+              {% else %}
+                {# マスターじゃない場合、自分で登録した情報しか編集・削除できない #}
+                {% if member.user_id == loginUser.id %}
+                  <a data-remodal-target="editMemberModal{{loop.index0}}"><button class="plus">編集</button></a>
+                  {% include ('popup/member/edit.twig') %}
+                  <a data-remodal-target="deleteMemberModal{{loop.index0}}"><button class="plus">削除</button></a>
+                  {% include ('popup/member/delete.twig') %}
+                {% endif %}
+              {% endif %}
             </td>
           </tr>
         {% endfor %}

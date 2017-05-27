@@ -10,15 +10,27 @@ class EditMember
     private $isCreateErrer = false;
 
     public function indexAction(Application $app) {
-        if (empty($app['session']->get('loginUser'))) {
+        $loginUser = $app['session']->get('loginUser');
+
+        if (empty($loginUser)) {
             return $app->redirect('/login');
         }
 
         $member = new Member($app);
         $memberDatas = $member->getMembers();
 
+        // 既に自分のデータを登録しているかどうか
+        $isCreated = false;
+        foreach ($memberDatas as $member) {
+            if ($member['user_id'] == $loginUser['id']) {
+                $isCreated = true;
+            }
+        }
+
         return $app['twig']->render('backend\editMember.twig', array(
-            'members' => $memberDatas,
+            'members'   => $memberDatas,
+            'isCreated' => $isCreated,
+            'loginUser' => $loginUser,
         ));
     }
 
@@ -29,7 +41,9 @@ class EditMember
      * @param Request $request
      */
     public function createAction(Application $app, Request $request) {
-        if (empty($app['session']->get('loginUser'))) {
+        $loginUser = $app['session']->get('loginUser');
+
+        if (empty($loginUser)) {
             return $app->redirect('/login');
         }
 
@@ -39,6 +53,8 @@ class EditMember
             'contact'      => $request->get('contact'),
             'playingGames' => $request->get('playingGames'),
             'introduction' => $request->get('introduction'),
+            'user_id'      => $loginUser['id'],
+            'role'         => $loginUser['role'],
         ]);
 
         // DBへの登録が成功したらメンバー編集画面にリダイレクト

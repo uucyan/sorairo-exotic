@@ -37,6 +37,8 @@ class Member
             'contact'       => $data['contact'],
             'playing_games' => $data['playingGames'],
             'introduction'  => $data['introduction'],
+            'user_id'       => $data['user_id'],
+            'role'          => $data['role'],
         ));
     }
 
