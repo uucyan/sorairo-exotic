@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class MemberPage
 {
-    public function indexAction(Application $app, Request $request) {
+    public function indexAction(Application $app) {
         if (empty($app['session']->get('loginUser'))) {
             return $app->redirect('/login');
         }
