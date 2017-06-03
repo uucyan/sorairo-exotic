@@ -86,4 +86,9 @@ $app->get('/RequestList', 'App\Controller\Backend\RequestList::indexAction')->bi
 $app->post('/requestUpdateAction', 'App\Controller\Backend\RequestList::updateAction')->bind('request_update_index');
 $app->post('/requestDeleteAction', 'App\Controller\Backend\RequestList::deleteAction')->bind('request_delete_index');
 
+// アカウント管理
+$app->get('/UserAccount', 'App\Controller\Backend\UserAccount::indexAction')->bind('user_account_index');
+$app->post('/PasswordChangeAction', 'App\Controller\Backend\UserAccount::changeAction')->bind('user_account_password_index');
+$app->post('/UserAccountCreateAction', 'App\Controller\Backend\UserAccount::createAction')->bind('user_account_create_index');
+
 $app->run();
