@@ -1,6 +1,53 @@
 {% extends "backend/base.html.twig" %}
 
 {% block body %}
+  <link rel="stylesheet" href="css/templateDesign/polymerMessage.css">
+
+  {% if messageType == 'changeSuccess' %}
+    <div class="animated shake success message">
+      <h2>入隊申請完了</h2>
+      <p>クランマスターからの返事を気長に待ちましょう。</p>
+    </div>
+  {% elseif messageType == 'changeError' %}
+    <div class="animated shake error message">
+      <h2>パスワードの変更に失敗しました。</h2>
+      {% if errorMessage.oldPasswordMismatch is defined %}
+        <p>{{errorMessage.oldPasswordMismatch}}</p>
+      {% endif %}
+      {% if errorMessage.newPasswordNotInput is defined %}
+        <p>{{errorMessage.newPasswordNotInput}}</p>
+      {% endif %}
+      {% if errorMessage.newPasswordUnmatchedToCriteria is defined %}
+        <p>{{errorMessage.newPasswordUnmatchedToCriteria}}</p>
+      {% endif %}
+      {% if errorMessage.newPasswordMismatch is defined %}
+        <p>{{errorMessage.newPasswordMismatch}}</p>
+      {% endif %}
+    </div>
+  {% elseif messageType == 'createError' %}
+    <div class="animated shake error message">
+      <h2>ユーザーの新規作成に失敗しました。</h2>
+      {% if errorMessage.userNameNotInput is defined %}
+        <p>{{errorMessage.userNameNotInput}}</p>
+      {% endif %}
+      {% if errorMessage.userNameNotHalfwidthAlphanumeric is defined %}
+        <p>{{errorMessage.userNameNotHalfwidthAlphanumeric}}</p>
+      {% endif %}
+      {% if errorMessage.userNameDuplicate is defined %}
+        <p>{{errorMessage.userNameDuplicate}}</p>
+      {% endif %}
+      {% if errorMessage.passwordNotInput is defined %}
+        <p>{{errorMessage.passwordNotInput}}</p>
+      {% endif %}
+      {% if errorMessage.passwordUnmatchedToCriteria is defined %}
+        <p>{{errorMessage.passwordUnmatchedToCriteria}}</p>
+      {% endif %}
+      {% if errorMessage.passwordMismatch is defined %}
+        <p>{{errorMessage.passwordMismatch}}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
   <div class="materialContainer">
    <div class="box">
       <div class="title">パスワード変更</div>
@@ -24,16 +71,6 @@
            <span class="spin"></span>
         </div>
 
-        {% if errorMessage.passwordMismatch is defined %}
-          <div class="title" style="font-size: 17px;">{{errorMessage.passwordMismatch}}</div>
-        {% endif %}
-        {% if errorMessage.newPasswordNotInput is defined %}
-          <div class="title" style="font-size: 17px;">{{errorMessage.newPasswordNotInput}}</div>
-        {% endif %}
-        {% if errorMessage.newPasswordMismatch is defined %}
-          <div class="title" style="font-size: 17px;">{{errorMessage.newPasswordMismatch}}</div>
-        {% endif %}
-
         <div class="button login">
            <button><span>送信</span> <i class="fa fa-check"></i></button>
         </div>
@@ -49,8 +86,8 @@
 
       <form action="UserAccountCreateAction" method="post" autocomplete="off">
         <div class="input">
-           <label for="regname">ユーザー名</label>
-           <input type="text" name="regname" id="regname">
+           <label for="name">ユーザー名</label>
+           <input type="text" name="name" id="name">
            <span class="spin"></span>
         </div>
 
@@ -193,5 +230,12 @@ $(function() {
    });
 
 });
+
+{# ユーザー新規作成でエラーが発生してリダイレクトした時、自動でユーザー作成フォームを開く#}
+{% if isCreateError == true %}
+  $(document).ready( function(){
+    $(".material-button").click();
+  });
+{% endif %}
 </script>
 {% endblock %}

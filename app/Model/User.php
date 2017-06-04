@@ -5,10 +5,25 @@ use Silex\Application;
 
 class User
 {
+    const OLD_PASSWORD_MISMATCH_MESSAGE = '・今のパスワードが正しくありません。';
+    const PASSWORD_MISMATCH_MESSAGE = '・再入力と不一致です。';
+    const PASSWORD_NOT_INPUT_MESSAGE = '・新しいパスワードで未入力があります。';
+    const PASSWORD_UNMATCHED_TO_CRITERIA = '・パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上で登録してください。';
+    const USER_NAME_DUPLICATE_MESSAGE = '・既に存在するユーザー名です。';
+    const USER_NAME_NOT_INPUT_MESSAGE = '・ユーザー名が未入力です。';
+    const USER_NAME_NOT_HALFWIDTH_ALPHANUMERIC_MESSAGE = '・ユーザー名は半角英数字のみです。';
 
-    const PASSWORD_MISMATCH_MESSAGE = '今のパスワードが正しくありません。';
-    const NEW_PASSWORD_MISMATCH_MESSAGE = '再入力と不一致です';
-    const NEW_PASSWORD_NOT_INPUT_MESSAGE = '新しいパスワードで未入力があります。';
+    private $app;
+
+    /**
+     * コンストラクタ
+     *
+     * @param Application $app
+     */
+    public function __construct(Application $app)
+    {
+        $this->app = $app;
+    }
 
     /**
      * 画面で入力した情報がDBの情報と一致すればユーザー情報を返却
@@ -40,26 +55,88 @@ class User
      * @param  array  $request
      * @return array
      */
-    public function changePasswordValidate($loginUserPassword, $request)
+    public function changeValidate($loginUserPassword, $request)
     {
-         $errorMessage = [];
+        $errorMessage = [];
 
         // 変更前のパスワードチェック
         if ($loginUserPassword !== $request['password']) {
-            $errorMessage += ['passwordMismatch' => self::PASSWORD_MISMATCH_MESSAGE];
+            $errorMessage += ['oldPasswordMismatch' => self::OLD_PASSWORD_MISMATCH_MESSAGE];
         }
 
-        // 新しいパスワードに未入力があるか
-        if ($request['newPassword'] == null || $request['reNewPassword'] == null) {
-            return $errorMessage += ['newPasswordNotInput' => self::NEW_PASSWORD_NOT_INPUT_MESSAGE];
+        // 新規パスワードのチェック
+        $errorMessage = $this->checkPassword($errorMessage, $request['newPassword'], $request['reNewPassword'], [
+            'newPasswordNotInput',
+            'newPasswordUnmatchedToCriteria',
+            'newPasswordMismatch',
+        ]);
+
+        return $errorMessage;
+    }
+
+    /**
+     * 新規ユーザー作成時のバリデーション
+     *
+     * @param  array $request
+     * @return array
+     */
+    public function createValidate($request)
+    {
+        $errorMessage = [];
+
+        // 新規パスワードのチェック
+        $errorMessage = $this->checkPassword($errorMessage, $request['password'], $request['rePassword'], [
+            'passwordNotInput',
+            'passwordUnmatchedToCriteria',
+            'passwordMismatch',
+        ]);
+
+        // ユーザー名が未入力かどうかチェック
+        if (empty($request['name'])) {
+            return $errorMessage += ['userNameNotInput' => self::USER_NAME_NOT_INPUT_MESSAGE];
         }
 
-        // 新しいパスワードが再入力したものと一致しているか
-        if ($request['newPassword'] !== $request['reNewPassword']) {
-            $errorMessage += ['newPasswordMismatch' => self::NEW_PASSWORD_MISMATCH_MESSAGE];
+        // ユーザー名が半角英数字かチェック
+        if (!preg_match("/^[a-zA-Z0-9]+$/", $request['name'])) {
+            return $errorMessage += ['userNameNotHalfwidthAlphanumeric' => self::USER_NAME_NOT_HALFWIDTH_ALPHANUMERIC_MESSAGE];
+        }
+
+        // DBに重複したユーザー名が存在しているかチェック
+        $sql = "SELECT COUNT(*) FROM user AS u WHERE u.name = '{$request['name']}'";
+        $count = $this->app['db']->fetchAll($sql);
+        if ($count[0]["COUNT(*)"] != '0') {
+            $errorMessage += ['userNameDuplicate' => self::USER_NAME_DUPLICATE_MESSAGE];
         }
 
         return $errorMessage;
     }
 
+    /**
+     * 新規登録するパスワードのバリデーション
+     *
+     * @param  array  $errorMessage
+     * @param  string $password
+     * @param  string $rePassword
+     * @param  array  $messageKeys
+     * @return array
+     */
+    private function checkPassword($errorMessage, $password, $rePassword, $messageKeys)
+    {
+        // パスワードに未入力があるか
+        if (empty($password) || empty($rePassword)) {
+            return $errorMessage += [$messageKeys[0] => self::PASSWORD_NOT_INPUT_MESSAGE];
+        }
+
+        // パスワードが半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上100文字以下かどうかチェック
+        if (!preg_match('/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/', $password)) {
+            return $errorMessage += [$messageKeys[1] => self::PASSWORD_UNMATCHED_TO_CRITERIA];
+        }
+
+        // パスワードが再入力したものと一致しているか
+        if ($password !== $rePassword) {
+            $errorMessage += [$messageKeys[2] => self::PASSWORD_MISMATCH_MESSAGE];
+        }
+
+        return $errorMessage;
+    }
 }
