@@ -8,6 +8,11 @@
       <h2>入隊申請完了</h2>
       <p>クランマスターからの返事を気長に待ちましょう。</p>
     </div>
+  {% elseif messageType == 'createSuccess' %}
+    <div class="animated shake success message">
+      <h2>ユーザーの新規作成が完了しました！</h2>
+      <p>メンバーに登録したユーザー名とパスワードを教えてログインしてもらおう。</p>
+    </div>
   {% elseif messageType == 'changeError' %}
     <div class="animated shake error message">
       <h2>パスワードの変更に失敗しました。</h2>

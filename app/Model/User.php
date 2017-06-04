@@ -26,6 +26,22 @@ class User
     }
 
     /**
+     * ユーザーの新規作成
+     *
+     * @param array $request
+     */
+    public function create($request)
+    {
+        $passwordHash = password_hash($request['password'], PASSWORD_DEFAULT);
+
+        $this->app['db']->insert('user', array(
+            'name'     => $request['name'],
+            'password' => $passwordHash,
+            'role'     => 2,
+        ));
+    }
+
+    /**
      * 画面で入力した情報がDBの情報と一致すればユーザー情報を返却
      *
      * @param  Application $app

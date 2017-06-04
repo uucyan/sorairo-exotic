@@ -13,9 +13,9 @@ class UserAccount
             return $app->redirect('/login');
         }
 
-        $errorMessage = $app['session']->get('errorMessage');
-        $isCreateError = $app['session']->get('isCreateError');
-        $messageType = $app['session']->get('messageType');
+        $errorMessage = $app['session']->get('errorMessage');   // バリデーションエラーメッセージ
+        $isCreateError = $app['session']->get('isCreateError'); // ユーザー作成時のエラー判定
+        $messageType = $app['session']->get('messageType');     // 成功と失敗のメッセージ表示判定
         $app['session']->remove('errorMessage');
         $app['session']->remove('isCreateError');
         $app['session']->remove('messageType');
@@ -49,7 +49,7 @@ class UserAccount
         $user = new User($app);
 
         $errorMessage = $user->createValidate([
-            'name'      => $request->get('name'),
+            'name'       => $request->get('name'),
             'password'   => $request->get('regpass'),
             'rePassword' => $request->get('reregpass'),
         ]);
@@ -60,5 +60,13 @@ class UserAccount
             $app['session']->set('messageType', 'createError');
             return $app->redirect('/UserAccount');
         }
+
+        $user->create([
+            'name'     => $request->get('name'),
+            'password' => $request->get('regpass')
+        ]);
+
+        $app['session']->set('messageType', 'createSuccess');
+        return $app->redirect('/UserAccount');
     }
 }
