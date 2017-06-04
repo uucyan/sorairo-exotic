@@ -42,6 +42,20 @@ class User
     }
 
     /**
+     * ユーザーのパスワード更新
+     *
+     * @param array $request
+     */
+    public function change($request)
+    {
+        $passwordHash = password_hash($request['password'], PASSWORD_DEFAULT);
+
+        $this->app['db']->update('user', array(
+            'password' => $passwordHash,
+        ), array('id' => $request['id']));
+    }
+
+    /**
      * 画面で入力した情報がDBの情報と一致すればユーザー情報を返却
      *
      * @param  Application $app
@@ -50,35 +64,46 @@ class User
      */
     public static function getLoginUser(Application $app, $inputData)
     {
-        $sql = "SELECT COUNT(*) FROM user AS lm WHERE lm.name = '{$inputData['name']}' AND lm.password = '{$inputData['password']}'";
+        $sql = "SELECT COUNT(*) FROM user AS u WHERE u.name = '{$inputData['name']}'";
         $count = $app['db']->fetchAll($sql);
 
-        // 入力データに一致するデータが存在しなかった場合はnullを返却
+        // 存在しないユーザー名かチェック
         if ($count[0]["COUNT(*)"] == '0') {
             return null;
         }
 
-        $sql = "SELECT id, name, role FROM user AS lm WHERE lm.name = '{$inputData['name']}' AND lm.password = '{$inputData['password']}'";
+        $sql = "SELECT * FROM user AS u WHERE u.name = '{$inputData['name']}'";
         $data = $app['db']->fetchAll($sql);
+        $userData = array_shift($data);
 
-        return array_shift($data);
+        // TODO: 本番環境のパスワード登録しなおしたらコメントアウト解除する
+        // 入力したパスワードのチェック
+        // if (!password_verify($inputData['password'], $userData['password'])) {
+        //     return null;
+        // }
+
+        return $userData;
     }
 
     /**
      * パスワード変更時のバリデーション
      *
-     * @param  string $loginUserPassword
+     * @param  string $userId
      * @param  array  $request
      * @return array
      */
-    public function changeValidate($loginUserPassword, $request)
+    public function changeValidate($userId, $request)
     {
         $errorMessage = [];
 
+        // TODO: 本番環境のパスワード登録しなおしたらコメントアウト解除する
         // 変更前のパスワードチェック
-        if ($loginUserPassword !== $request['password']) {
-            $errorMessage += ['oldPasswordMismatch' => self::OLD_PASSWORD_MISMATCH_MESSAGE];
-        }
+        // $sql = "SELECT * FROM user AS u WHERE u.id = '{$userId}'";
+        // $data = $this->app['db']->fetchAll($sql);
+        // $userData = array_shift($data);
+        // if (!password_verify($request['password'], $userData['password'])) {
+        //     $errorMessage += ['oldPasswordMismatch' => self::OLD_PASSWORD_MISMATCH_MESSAGE];
+        // }
 
         // 新規パスワードのチェック
         $errorMessage = $this->checkPassword($errorMessage, $request['newPassword'], $request['reNewPassword'], [

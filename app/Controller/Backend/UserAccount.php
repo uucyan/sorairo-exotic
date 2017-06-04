@@ -7,6 +7,11 @@ use App\Model\User;
 
 class UserAccount
 {
+    /**
+     * IndexAction
+     *
+     * @param Application $app
+     */
     public function indexAction(Application $app)
     {
         if (empty($app['session']->get('loginUser'))) {
@@ -27,33 +32,58 @@ class UserAccount
         ));
     }
 
+    /**
+     * パスワードの変更
+     *
+     * @param  Application $app
+     * @param  Request $request
+     */
     public function changeAction(Application $app, Request $request)
     {
         $user = new User($app);
+        $loginUser = $app['session']->get('loginUser');
 
-        $errorMessage = $user->changeValidate($loginUser['password'], [
+        // パスワードのバリデーション
+        $errorMessage = $user->changeValidate($loginUser['id'], [
             'password'      => $request->get('password'),
             'newPassword'   => $request->get('newPassword'),
             'reNewPassword' => $request->get('reNewPassword'),
         ]);
 
+        // バリデーションエラーが存在する場合、エラーメッセージを画面に返却
         if (!empty($errorMessage)) {
             $app['session']->set('errorMessage', $errorMessage);
             $app['session']->set('messageType', 'changeError');
             return $app->redirect('/UserAccount');
         }
+
+        $user->change([
+            'password' => $request->get('newPassword'),
+            'id' => $loginUser['id'],
+        ]);
+
+        $app['session']->set('messageType', 'changeSuccess');
+        return $app->redirect('/UserAccount');
     }
 
+    /**
+     * アカウントの新規作成
+     *
+     * @param  Application $app
+     * @param  Request $request
+     */
     public function createAction(Application $app, Request $request)
     {
         $user = new User($app);
 
+        // ユーザー名とパスワードのバリデーション
         $errorMessage = $user->createValidate([
             'name'       => $request->get('name'),
             'password'   => $request->get('regpass'),
             'rePassword' => $request->get('reregpass'),
         ]);
 
+        // バリデーションエラーが存在する場合、エラーメッセージを画面に返却
         if (!empty($errorMessage)) {
             $app['session']->set('errorMessage', $errorMessage);
             $app['session']->set('isCreateError', true);
@@ -63,7 +93,7 @@ class UserAccount
 
         $user->create([
             'name'     => $request->get('name'),
-            'password' => $request->get('regpass')
+            'password' => $request->get('regpass'),
         ]);
 
         $app['session']->set('messageType', 'createSuccess');
