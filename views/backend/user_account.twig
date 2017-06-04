@@ -84,6 +84,8 @@
       <!-- <a href="" class="pass-forgot">Forgot your password?</a> -->
    </div>
 
+  {# ユーザー追加はマスター権限だけが行える #}
+  {% if loginUser.role == 1 %}
    <div class="overbox">
       <div class="material-button alt-2"><span class="shape"></span></div>
 
@@ -113,6 +115,7 @@
         </div>
       </form>
    </div>
+  {% endif %}
 </div>
 
 <script>

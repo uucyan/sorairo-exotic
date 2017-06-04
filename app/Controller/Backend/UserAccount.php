@@ -18,6 +18,8 @@ class UserAccount
             return $app->redirect('/login');
         }
 
+        $loginUser = $app['session']->get('loginUser');
+
         $errorMessage = $app['session']->get('errorMessage');   // バリデーションエラーメッセージ
         $isCreateError = $app['session']->get('isCreateError'); // ユーザー作成時のエラー判定
         $messageType = $app['session']->get('messageType');     // 成功と失敗のメッセージ表示判定
@@ -26,6 +28,7 @@ class UserAccount
         $app['session']->remove('messageType');
 
         return $app['twig']->render('backend\user_account.twig', array(
+            'loginUser'     => $loginUser,
             'errorMessage'  => $errorMessage,
             'isCreateError' => $isCreateError,
             'messageType'   => $messageType,
