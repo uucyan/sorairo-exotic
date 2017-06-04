@@ -76,11 +76,10 @@ class User
         $data = $app['db']->fetchAll($sql);
         $userData = array_shift($data);
 
-        // TODO: 本番環境のパスワード登録しなおしたらコメントアウト解除する
         // 入力したパスワードのチェック
-        // if (!password_verify($inputData['password'], $userData['password'])) {
-        //     return null;
-        // }
+        if (!password_verify($inputData['password'], $userData['password'])) {
+            return null;
+        }
 
         return $userData;
     }
@@ -96,14 +95,13 @@ class User
     {
         $errorMessage = [];
 
-        // TODO: 本番環境のパスワード登録しなおしたらコメントアウト解除する
         // 変更前のパスワードチェック
-        // $sql = "SELECT * FROM user AS u WHERE u.id = '{$userId}'";
-        // $data = $this->app['db']->fetchAll($sql);
-        // $userData = array_shift($data);
-        // if (!password_verify($request['password'], $userData['password'])) {
-        //     $errorMessage += ['oldPasswordMismatch' => self::OLD_PASSWORD_MISMATCH_MESSAGE];
-        // }
+        $sql = "SELECT * FROM user AS u WHERE u.id = '{$userId}'";
+        $data = $this->app['db']->fetchAll($sql);
+        $userData = array_shift($data);
+        if (!password_verify($request['password'], $userData['password'])) {
+            $errorMessage += ['oldPasswordMismatch' => self::OLD_PASSWORD_MISMATCH_MESSAGE];
+        }
 
         // 新規パスワードのチェック
         $errorMessage = $this->checkPassword($errorMessage, $request['newPassword'], $request['reNewPassword'], [
