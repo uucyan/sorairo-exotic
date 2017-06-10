@@ -1,6 +1,6 @@
 # Windowsで空色えきぞちっくHP作成！
 
-## 大前提
+## 構築環境
 
 OS：Windows10
 
@@ -15,8 +15,6 @@ http://nelog.jp/cmder
 
 http://nattomix.blog82.fc2.com/blog-entry-161.html
 
-大前提とか言いつつ、別にWin10じゃなくても大丈夫だし、ターミナルなんて自由。
-おれはこの環境でやったんじゃああああ
 
 ## 環境構築手順
 
