@@ -64,8 +64,8 @@ class User
      */
     public static function getLoginUser(Application $app, $inputData)
     {
-        $sql = "SELECT COUNT(*) FROM user AS u WHERE u.name = '{$inputData['name']}'";
-        $count = $app['db']->fetchAll($sql);
+        $sql = "SELECT COUNT(*) FROM user AS u WHERE u.name = ?";
+        $count = $app['db']->fetchAll($sql, [$inputData['name']]);
 
         // 存在しないユーザー名かチェック
         if ($count[0]["COUNT(*)"] == '0') {
