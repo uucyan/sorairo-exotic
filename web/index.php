@@ -3,12 +3,22 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 $app = new Silex\Application();
-$app['debug'] = true;
+
+$R_AD = $_SERVER['REMOTE_ADDR'];
+if ($R_AD == '127.0.0.1') {
+    $app['debug'] = true;
+} else {
+    $app['debug'] = false;
+}
+
+// Twig
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
+
 // Session
 $app->register(new Silex\Provider\SessionServiceProvider());
+
 // MySQL
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 if (empty($url["path"])){
@@ -38,7 +48,6 @@ if (empty($url["path"])){
         )
     ));
 }
-
 
 /* ---- Frontend -------------------------------------------------------------------------------- */
 
